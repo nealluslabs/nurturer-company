@@ -18,6 +18,7 @@ import { Button, Grid, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { saveFilteredUsers, saveFilteredContacts } from 'redux/reducers/user.slice';
 import { fetchAllContactForOneUser } from 'src/redux/actions/user.action';
+import { fetchAllUsersPeriod } from 'redux/actions/user.action';
 
 
 
@@ -36,10 +37,27 @@ const useStyles = makeStyles((theme) => ({
 
 function CandidateApp(props) {
   const dispatch = useDispatch();
- 
+  
+
+
+
+
   const history = useHistory();
   const { isAuth, user } = useSelector((state) => state.login);
   const { allUsers, allContacts, filteredUsers, filteredContacts, isLoading } = useSelector((state) => state.user);
+ 
+
+
+  const [onlyUsers,setOnlyUsers] = useState(allUsers && allUsers.filter((user)=>(user.isUser )) )
+  useEffect(() => {
+    dispatch(fetchAllUsersPeriod());
+
+
+   setOnlyUsers(allUsers && allUsers.filter((user)=>{user.isUser})) 
+  console.log("OYA WHAT IS ONLY USERS--->",onlyUsers)
+    
+ }, [])
+
   const classes = useStyles(props);
   const pageLayout = useRef(null);
   const [tabValue, setTabValue] = useState(0);
@@ -150,7 +168,7 @@ function CandidateApp(props) {
              </Grid>
 
             <div style={{marginTop:"2rem",width:"100%"}}>
-            <CandidateList forms={allContacts} /> 
+            <CandidateList forms={onlyUsers} /> 
             </div>
         </div>
       }

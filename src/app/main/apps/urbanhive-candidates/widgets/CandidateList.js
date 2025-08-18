@@ -22,6 +22,7 @@ import farmer10 from 'src/images/farmer10.jpeg';
 
 //import { saveResponseInFocus,clearResponseInFocus, saveFormInFocus, clearFormInFocus} from 'src/redux/reducers/group.slice';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllUsers, fetchAllUsersPeriod } from 'redux/actions/user.action';
 //import { makeStyles } from '@mui/styles';
 //import { fetchAllFarmerProduce, fetchFarmerById, fetchRetailerFarmerById } from 'src/redux/actions/group.action';
 
@@ -168,6 +169,9 @@ export default function CandidateList({ forms }) {
   const dispatch = useDispatch();
   //const classes = useStyles();
 
+ 
+ 
+
   //const { isAgent,isAdmin,isSuperAdmin } = useSelector((state) => state.group);
  // const { user } = useSelector((state) => state.auth);
 
@@ -207,6 +211,11 @@ export default function CandidateList({ forms }) {
          
         },   '& .MuiDataGrid-cell:focus': {
           outline: 'none', // Removes the blue focus outline
+        },
+        "& .MuiDataGrid-columnHeaderTitle": {
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          color: "black",
         },
 
         '& .MuiDataGrid-row:nth-child(even)': {

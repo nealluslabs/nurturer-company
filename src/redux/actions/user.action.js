@@ -36,6 +36,30 @@ export const fetchAllUsers = (uid) => async (dispatch) => {
 
 };
 
+
+export const fetchAllUsersPeriod = () => async (dispatch) => {
+  dispatch(fetchUsersPending());
+
+  var fetchUsers = db.collection('users')
+  
+  console.log("This should show all the users", fetchUsers);
+  fetchUsers = fetchUsers.where("isUser", "==", true)
+  fetchUsers.get()
+  .then((snapshot) => {
+      const users = snapshot.docs.map((doc) => ({ ...doc.data() }));
+      const filteredUser = users.filter(user => user);
+      console.log('Filtered User\'s', filteredUser );
+      // }
+      // dispatch(fetchUsersSuccess(users));
+      dispatch(fetchUsersSuccess(filteredUser));
+}).catch((error) => {
+      var errorMessage = error.message;
+      console.log('Error fetching profile', errorMessage);
+      dispatch(fetchUsersFailed({ errorMessage }));
+});
+
+};
+
 export const fetchAllContactForOneUser = (uid) => async (dispatch) => {
     dispatch(fetchUsersPending());
     
