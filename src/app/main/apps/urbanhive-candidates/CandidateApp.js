@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import reducer from './store';
 import CandidateCard from './widgets/CandidateCard';
+import CandidateList from './widgets/CandidateList';
 import { Link, useHistory, Redirect } from 'react-router-dom';
 import { logout } from 'src/redux/actions/auth.action';
 import { fb, db, auth } from 'config/firebase';
@@ -93,7 +94,7 @@ function CandidateApp(props) {
 
 
 
-<Grid container spacing={0} style={{ display: "flex", justifyContent: "space-between" ,position:"relative",/*left:"calc(64vw - 44%)"*/left:"43.5rem"/*,transform: "translateX(-55%)"*/,top:"3rem",width:"40rem",flexDirection:"row",marginBottom:"1.5rem",zIndex:"1000"}}>
+<Grid container spacing={0} style={{ display: "flex", justifyContent: "space-between" ,position:"relative",/*left:"calc(64vw - 44%)"*/left:"45.5rem"/*,transform: "translateX(-55%)"*/,top:"1rem",width:"40rem",flexDirection:"row",marginBottom:"1.5rem",zIndex:"1000"}}>
               
               {/*1*/}
                <Grid item>
@@ -143,13 +144,13 @@ function CandidateApp(props) {
                      }
                    }}
                  >
-                   Add Contact
+                   Add {/*Contact*/} User
                  </Button>
                </Grid>
              </Grid>
 
-            <div style={{marginTop:"2rem",width:"150%"}}>
-            <CandidateCard /> 
+            <div style={{marginTop:"2rem",width:"100%"}}>
+            <CandidateList forms={allContacts} /> 
             </div>
         </div>
       }

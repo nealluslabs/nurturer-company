@@ -55,37 +55,42 @@ const navigationConfig = [
     url: '/apps/dashboard',
   },
  
-  {
+/*  {
     id: 'inbox',
     title: 'Touches',
     type: 'item',
     icon: 'chat',
     url: '/apps/inbox',
-  },
-  {
+  },*/
+ /* {
     id: 'candidates',
     title: 'Contacts',
     type: 'item',
     icon: 'group_add',
     url: '/candidates',
-  },
- 
- 
-  
+  },*/
   {
+  id: 'candidates',
+  title: 'Users',
+  type: 'item',
+  icon: 'group_add',
+  url: '/candidates',
+},
+ 
+ /* {
     id: 'cards',
     title: 'Cards',
     type: 'item',
     icon: 'dashboard',
     url: '/apps/cards',
-  },
-  {
+  },*/
+  /*{
     id: 'newsletter',
     title: 'Newsletter',
     type: 'item',
     icon: 'email',
     url: '/apps/newsletter',
-  },
+  },*/
   {
     id: 'settings',
     title: 'Settings',
