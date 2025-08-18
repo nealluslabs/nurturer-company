@@ -3,6 +3,7 @@ import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import FuseLayout from '@fuse/core/FuseLayout';
 import FuseTheme from '@fuse/core/FuseTheme';
 import history from '@history';
+//import { Link, useHistory } from 'react-router-dom';
 // import { Router } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { Router, Route, Switch } from "react-router-dom";
@@ -15,7 +16,9 @@ import Login from './main/apps/urbanhive-login/Login';
 import Register from './main/apps/urbanhive-register/Register';
 
 
-const App = () => {  
+const App = () => { 
+ // const history = useHistory()
+  
   return (
       <Router history={history}>
         <FuseAuthorization>

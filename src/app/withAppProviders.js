@@ -7,7 +7,7 @@ import rtl from 'jss-rtl';
 import DateFnsUtils from '@date-io/date-fns';
 import AppContext from './AppContext';
 import routes from './fuse-configs/routesConfig';
-// import store from './store';
+ //import store from './store';
 
 //my redux imports
 import { Provider } from 'react-redux';

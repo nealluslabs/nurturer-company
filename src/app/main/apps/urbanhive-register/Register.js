@@ -75,6 +75,10 @@ function Register() {
                   <Typography className="text-24 font-semibold logo-text" color="inherit">
                     NURTURER
                   </Typography>
+
+                  <Typography className="text-24 font-semibold logo-text" color="inherit">
+                    COMPANY
+                  </Typography>
                   <Typography
                     className="text-16 tracking-widest -mt-8 font-700"
                     color="textSecondary"
@@ -145,7 +149,7 @@ function Register() {
             >
               <Typography variant="h3" color="inherit" className="font-semibold leading-tight">
                 Welcome <br />
-                to <br /> NURTURER!
+                to <br /> NURTURER COMPANY
               </Typography>
             </motion.div>
 
