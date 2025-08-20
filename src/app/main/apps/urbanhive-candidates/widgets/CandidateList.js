@@ -41,13 +41,13 @@ const noimage = Math.random()*11 < 1 ? farmer1 : Math.random()*11 < 2 ? farmer2:
 
 
 const columns =  !isMobile ? [
-  {/*
+  /*{
     field: 'id',
     headerName: '#', 
     width: 250,
     renderCell: (params) => {
     },
-  */},
+  },*/
  /* { field: 'approvedDate', headerName: 'Date', width: 200,height:450, renderCell: (params) => {
     return <div style={{fontSize:"1rem",display:"flex",flexDirection:"column"}}>
       {params.row.approvedDate && new Date(params.row.approvedDate).toDateString() }
@@ -103,12 +103,18 @@ const columns =  !isMobile ? [
   { field: 'companyName', headerName: 'Company Name', width: 120,height:450, renderCell: (params) => {
     return <div style={{fontSize:"1.5rem"}}>{params.row.companyName}</div>;
   }},
-  { field: 'city', headerName: 'City', width: 120,height:450, renderCell: (params) => {
+  { field: 'email', headerName: 'Email', width: 120,height:450, renderCell: (params) => {
+    return <div style={{fontSize:"1.5rem"}}>{params.row.email}</div>;
+  }},
+   { field: 'phone', headerName: 'Phone', width: 120,height:450, renderCell: (params) => {
+    return <div style={{fontSize:"1.5rem"}}>{params.row.phone}</div>;
+  }},
+ /* { field: 'city', headerName: 'City', width: 120,height:450, renderCell: (params) => {
     return <div style={{fontSize:"1.5rem"}}>{params.row.city}</div>;
-  }},
-   { field: 'frequency', headerName: 'Frequency', width: 120,height:450, renderCell: (params) => {
+  }},*/
+  /* { field: 'frequency', headerName: 'Frequency', width: 120,height:450, renderCell: (params) => {
     return <div style={{fontSize:"1.5rem"}}>{params.row.frequency}</div>;
-  }},
+  }},*/
  // { field: 'invoice', headerName: ' Invoice', width: 70,height:450, renderCell: (params) => {
  //   return <div style={{fontSize:"1rem"}}>{params.row.invoice}</div>;
  // }},

@@ -48,12 +48,19 @@ function CandidateApp(props) {
  
 
 
-  const [onlyUsers,setOnlyUsers] = useState(allUsers && allUsers.filter((user)=>(user.isUser )) )
+  const [onlyUsers,setOnlyUsers] = useState([] )
+
+
+
   useEffect(() => {
     dispatch(fetchAllUsersPeriod());
 
+const usersForNow = (allUsers && allUsers)/*.filter((user)=>{user.isUser}))*/
 
-   setOnlyUsers(allUsers && allUsers.filter((user)=>{user.isUser})) 
+const usersForNowWithId = usersForNow.map((item)=>({...item,id:item.id?item.id:item.uid? item.uid:Math.random()}))
+
+
+   setOnlyUsers(usersForNowWithId) 
   console.log("OYA WHAT IS ONLY USERS--->",onlyUsers)
     
  }, [])
