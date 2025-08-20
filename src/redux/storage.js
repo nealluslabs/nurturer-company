@@ -7,14 +7,16 @@ const createNoopStorage = () => {
     },
     setItem(_key, value) {
       return Promise.resolve(value);
-   },
-  removeItem(_key) {
-     return Promise.resolve();
     },
-   };
+    removeItem(_key) {
+      return Promise.resolve();
+    },
+  };
 };
 
- const storage = typeof window !== 'undefined'   ? createWebStorage('local')
+const storage =
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
     : createNoopStorage();
 
- export default storage;
+export default storage;

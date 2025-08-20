@@ -1,5 +1,37 @@
-import { fetchChatsPending, fetchChatsSuccess, setCurrentChat ,clearCurrentChat} from "src/redux/reducers/chat.slice";
+import { fetchChatsPending, fetchChatsSuccess, fetchInboxMessages, setCurrentChat } from "../reducers/chat.slice";
 import { db, fb, auth, storage } from '../../config/firebase';
+import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
+import "firebase/firestore";
+import firebase from "firebase/app";
+
+export const addToNotices = (message ) => async (dispatch) => {
+   /* db.collection("notices").add({
+        header: "sample event",
+        message: message,
+        time: Date.now()
+    })*/
+  const adminId = "aPmalurwLta7i2Ygrmkx4dYVfMJ2"
+
+    db.collection('users').doc(adminId).update({
+        generalNotices:firebase.firestore.FieldValue.arrayUnion({title:message})
+        
+      })
+    .then((docRef) => {
+        console.log("Document updated is: ", docRef);
+       
+        
+        notifySuccessFxn('notice has been added to feed.✔');
+        
+    })
+    .catch((error) => {
+        console.error("Error adding notice: ", error);
+        notifyErrorFxn('Error adding notice, please try again.❌')
+    });
+
+};
+
+
+
 
 
 
@@ -7,18 +39,10 @@ export const fetchChats = (user1, user2_data) => async (dispatch) => {
     const user2 = user2_data.uid;
     const users =  {user1, user2};
     console.log('User 1: ', user1);
-    console.log('User 2 chat data: ', user2);
+    console.log('User 2: ', user2);
 
-    dispatch(setCurrentChat({}));
      dispatch(setCurrentChat(user2_data));
      dispatch(getRealtimeChat(users))
-};
-
-export const clearChats = () => async (dispatch) => {
-   
-    dispatch(clearCurrentChat());
-    
-    
 };
 
 
@@ -75,4 +99,21 @@ export const getRealtimeChat = (users) => async (dispatch) => {
 };
 
 
+export const fetchInbox = (uid) => async (dispatch) => {
+    db.collection("inbox")
+    .where('id', '==', uid)
+     .get()
+     .then((snapshot) => {
+       const allInbox = snapshot.docs.map((doc) => ({ ...doc.data() }));
+     if (allInbox.length > 0) {
+       console.log("All Inbox Data:", allInbox);
+       dispatch(fetchInboxMessages(allInbox));
+     } else {
+         dispatch(fetchInboxMessages(allInbox));
+         console.log("No inbox!");
+     }
+   }).catch((error) => {
+     console.log("Error getting document:", error);
+   });
+   };
 

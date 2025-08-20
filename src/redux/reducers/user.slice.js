@@ -2,17 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   allUsers: [],
-  filteredUsers:[],
-  allContacts: [],
-  filteredContacts:[],
   liveUsers: [],
   connectedUsers: [],
   connects: [],
   connects2: [],
   isLoading: false,
-  editedParagraphs:{},
-  chatGptAnswer:{},
-  candidateInFocus:{},
   info: '',
   error: '',
   message: '',
@@ -30,36 +24,9 @@ const userSlice = createSlice({
       fetchUsersSuccess: (state, action) => {
         state.isLoading = false;
         state.allUsers = action.payload;
-        state.filteredUsers = action.payload;
         state.error = '';
         state.message = action.payload.msg;
     },
-    fetchContactsSuccess: (state, action) => {
-        state.isLoading = false;
-        state.allContacts = action.payload;
-        state.filteredContacts = action.payload;
-        state.error = '';
-        state.message = action.payload.msg; 
-    },
-    saveFilteredUsers: (state, action) => { 
-      state.filteredUsers = action.payload;
-     
-  },
-  saveEditedParagraphs: (state, action) => { 
-    state.editedParagraphs = action.payload;
-   
-},
-saveChatGptAnswer: (state, action) => { 
-  state.chatGptAnswer = action.payload;
- 
-},
-  saveFilteredContacts: (state, action) => { 
-      state.filteredContacts = action.payload;
-  },
-  saveCandidateInFocus: (state, action) => { 
-    state.candidateInFocus = action.payload;
-   
-},
     fetchRealTimeUsersSuccess: (state, action) => {
       state.isLoading = false;
       state.liveUsers = action.payload;
@@ -73,10 +40,6 @@ saveChatGptAnswer: (state, action) => {
     state.message = action.payload.msg;
 },
     fetchUsersFailed: (state, { payload }) => {
-      (state.isLoading = false);
-        (state.error = payload.errorMessage);
-    },
-    fetchContactsFailed: (state, { payload }) => {
       (state.isLoading = false);
         (state.error = payload.errorMessage);
     },
@@ -115,13 +78,6 @@ const { actions, reducer } = userSlice;
 export const {
  fetchUsersPending,
  fetchUsersSuccess,
- fetchContactsSuccess,
- fetchContactsFailed,
- saveFilteredUsers,
- saveEditedParagraphs,
- saveChatGptAnswer,
- saveFilteredContacts,
- saveCandidateInFocus,
  fetchRealTimeUsersSuccess,
  fetchConnectedUserSuccess,
  fetchUsersFailed,

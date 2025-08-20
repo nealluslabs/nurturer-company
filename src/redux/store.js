@@ -1,38 +1,32 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import loginReducer from 'src/redux/reducers/auth.slice';
-import profileReducer from 'src/redux/reducers/profile.slice';
-import createDevReducer from 'src/redux/reducers/createDev.slice';
-import userReducer from 'src/redux/reducers/user.slice';
-import adminUserReducer from 'src/redux/reducers/adminUser.slice';
-import developerReducer from 'src/redux/reducers/developer.slice';
-import appointmentsReducer from 'src/redux/reducers/appointments.slice';
-import bootcampReducer from 'src/redux/reducers/bootcamp.slice';
-import chatReducer from 'src/redux/reducers/chat.slice';
-import fuse from '../app/store/fuse';
-import i18n from '../app/store/i18nSlice';
-import chatApp from 'app/main/apps/urbanhive-inbox/store';
-import { persistReducer } from 'redux-persist';
-import storage from './storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import { useDispatch as useAppDispatch, useSelector as useAppSelector } from 'react-redux';
 import thunk from 'redux-thunk';
+import storage from './storage';
+import jobReducer from './reducers/job.slice';
+import authReducer from './reducers/auth.slice';
+import groupReducer from './reducers/group.slice';
+import inboxReducer from './reducers/chat.slice';
+import candidateReducer from './reducers/candidate.slice';
+import transactionReducer from './reducers/transactions.slice';
+// import chatReducer from '../chat-src/redux/slices/chat';
+
+
 
 const reducers = combineReducers({
-  login: loginReducer,
-  profile: profileReducer,
-  createDev:createDevReducer,
-  user: userReducer,
-  adminUser: adminUserReducer,
-  developer:developerReducer,
-  appointments:appointmentsReducer,
-  bootcamp: bootcampReducer,
-  chat: chatReducer,
-  fuse,
-  i18n,
-  chatApp,
+  jobs:jobReducer,
+  auth: authReducer,
+  group: groupReducer,
+  // chat: chatReducer,
+  inbox: inboxReducer,
+  transaction: transactionReducer,
+  candidates:candidateReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
+  // blacklist: ['auth']
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -42,5 +36,6 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
   middleware: [thunk],
 });
+
 
 export default store;
