@@ -70,11 +70,10 @@ import CardTemplatesPage from './pages/CardTemplatesPage';
 import NewslettersPage from './pages/NewslettersPage';
 import MusicBriefPage from './pages/MusicBriefPage';
 import OneOnOneSessionPage from './pages/OneOnOneSessionPage';
+import DashboardHome from './pages/DashboardHome';
 
 export default function Router() {
-  const routes = useRoutes([
-   
-     
+  const routes = useRoutes([ 
    
    
     {
@@ -82,7 +81,8 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/login" />, index: true },
-        {path: 'home', element:<UserListPage/>},
+        {path: 'home', element:<DashboardHome/>},
+        {path: 'users', element:<UserListPage/>},
         { path: 'artists', element:<CardTemplatesPage/>/*<HomePage1 />*/ },
         { path: 'feed', element: <FeedPage /> },
         { path: 'courses-stats', element: <CoursesStatsPage /> },

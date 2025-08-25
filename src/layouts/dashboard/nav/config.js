@@ -8,20 +8,25 @@ const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ 
 
 const navConfig = [
   {
-    title: 'Users',
+    title: 'Dashboard',
     path: '/dashboard/home',
-    icon: <FaUser style={{ fontSize: '14px' }} />
-  },
-  {
-    title: 'Cards',
-    path: '/dashboard/artists',
     icon: <MdDashboard style={{ fontSize: '14px' }} />
   },
   {
-    title: `Newsletters`,
-    path: '/dashboard/media',
-    icon: <MdEmail style={{ fontSize: '14px' }} />,
+    title: 'Users',
+    path: '/dashboard/users',
+    icon: <FaUser style={{ fontSize: '14px' }} />
   },
+  // {
+  //   title: 'Cards',
+  //   path: '/dashboard/artists',
+  //   icon: <MdDashboard style={{ fontSize: '14px' }} />
+  // },
+  // {
+  //   title: `Newsletters`,
+  //   path: '/dashboard/media',
+  //   icon: <MdEmail style={{ fontSize: '14px' }} />,
+  // },
   {
     title: `Settings`,
     path: '/dashboard/settings',
