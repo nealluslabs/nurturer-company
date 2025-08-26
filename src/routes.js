@@ -71,6 +71,7 @@ import NewslettersPage from './pages/NewslettersPage';
 import MusicBriefPage from './pages/MusicBriefPage';
 import OneOnOneSessionPage from './pages/OneOnOneSessionPage';
 import DashboardHome from './pages/DashboardHome';
+import SubscriptionPage from './pages/SubscriptionPage';
 
 export default function Router() {
   const routes = useRoutes([ 
@@ -85,6 +86,7 @@ export default function Router() {
         {path: 'users', element:<UserListPage/>},
         { path: 'artists', element:<CardTemplatesPage/>/*<HomePage1 />*/ },
         { path: 'feed', element: <FeedPage /> },
+        {path: 'subscriptions', element:<SubscriptionPage />},
         { path: 'courses-stats', element: <CoursesStatsPage /> },
         { path: 'media', element: <NewslettersPage /> }, // <StudentListPage />
         { path: "announcement", element: <AnnouncementPage /> },

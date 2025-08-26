@@ -49,3 +49,185 @@
       transform: rotate(0deg);
     }
   }
+
+/* Start of Subscription Page Styling */
+
+.subscription_title {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.flex_display
+{
+  display: flex;
+  align-items: center;
+}
+
+.proper_box {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 18px 24px;
+}
+
+.space_btw {
+  justify-content: space-between;
+}
+
+.subscription_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.subscription_card {
+  width: 70%;
+  padding: 24px;
+}
+
+.plan_row {
+  margin-top: 18px;
+}
+
+.plan_split {
+  display: flex;
+  gap: 20px;
+  align-items: stretch; /* ensure children stretch to same height */
+}
+
+.plan_split_column {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan_split_column .proper_box {
+  /* make inner plan boxes take full column height */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+/* ensure content area inside each plan expands so buttons sit at the bottom */
+.plan_split_column .space_up_md {
+  flex: 1 1 auto;
+}
+
+/* make sure children stretch and no accidental margins collapse */
+.plan_split_column > * {
+  width: 100%;
+  /* ensure the wrapper element becomes a flex child and stretches */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 800px) {
+  .plan_split {
+    flex-direction: column;
+  }
+  .plan_split_column {
+    width: 100%;
+  }
+}
+
+.plan_name {
+  margin: 0 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.plan_button {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+
+.space_up_sm {
+  margin-top: 8px;
+}
+
+.space_up_md {
+  margin-top: 16px;
+}
+
+.sub_detail_sm_txt {
+  font-size: 14px;
+  color: #666666;
+  margin-top: 4px;
+}
+
+.amt_txt {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+.long_btn_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding-top: 28px;
+}
+
+.long_btn {
+  border: none;
+  padding: 7px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: none;
+  min-width: 260px; /* makes the buttons long */
+}
+
+.long_btn:hover {
+  opacity: 0.95;
+}
+
+.btn-vip {
+  background: #000000;
+  color: #ffffff;
+}
+
+.btn-pro {
+  background: #0367fc;
+  color: #ffffff;
+}
+
+.btn-enterprise {
+  background: #03fc5a;
+  color: #000000;
+}
+
+.service_message {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff8e1;
+  color: #92400e;
+  padding: 10px 12px;
+  border: 1px solid rgba(245,158,11,0.18); 
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 14px;
+}
+
+.service_message svg {
+  color: #f59e0b; 
+  font-size: 20px;
+}
+
+.service_message strong {
+  color: #92400e;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* End of Subscription Page Styling */
