@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   Box, 
@@ -11,10 +12,10 @@ import {
 } from "@mui/material";
 import { useDispatch } from 'react-redux';
 
-export default function SettingsPage() {
+export default function CreateUsersPage() {
   const [values, setValues] = useState({
-    password: '',
-    resetPassword: ''
+    email: '',
+    confirmEmail: ''
   });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -35,7 +36,7 @@ export default function SettingsPage() {
     // Add your submit logic here
     setTimeout(() => {
       setIsLoading(false);
-      setMessage('Password reset successfully!');
+      setMessage('User created successfully!');
     }, 2000);
   };
 
@@ -58,7 +59,7 @@ export default function SettingsPage() {
             }}
             mb={3}
             px={0.5}
-          >SETTINGS</Typography>
+          >CREATE USER</Typography>
 
           <form onSubmit={handleSubmit}>
             {error && (
@@ -105,19 +106,19 @@ export default function SettingsPage() {
               </div>
             )}
 
-            <h2>Reset Password</h2>
+            <h2>Create New User</h2>
             <br/>
 
             <Grid container spacing={4} style={{position:"relative", marginTop:"2rem"}}>
               <Grid item xs={12} sm={6} style={{marginTop:"1rem"}}>
                 <TextField
-                  label="Password"
-                  name="password"
-                  value={values.password}
+                  label="Email Address"
+                  name="email"
+                  value={values.email}
                   onChange={handleInputChange}
                   fullWidth
                   variant="outlined"
-                  type="password"
+                  type="email"
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
@@ -136,13 +137,13 @@ export default function SettingsPage() {
 
               <Grid item xs={12} sm={6}>
                 <TextField
-                  name="resetPassword"
-                  label="Reset Password"
-                  value={values.resetPassword}
+                  name="confirmEmail"
+                  label="Confirm Email Address"
+                  value={values.confirmEmail}
                   onChange={handleInputChange}
                   fullWidth
                   variant="outlined"
-                  type="password"
+                  type="email"
                   multiline
                   rows={2}
                   maxRows={4}
@@ -165,7 +166,7 @@ export default function SettingsPage() {
 
             <br/>
             <Divider>
-              <Chip label="😉 | 🔃" />
+              <Chip label="📧 | ➕" />
             </Divider>
 
             <Box 
@@ -195,7 +196,7 @@ export default function SettingsPage() {
                     }
                   }}
                 >
-                  {isLoading ? 'Loading...' : 'Submit'}
+                  {isLoading ? 'Loading...' : 'Create User'}
                 </Button>
               </div>
             </Box>

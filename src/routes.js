@@ -72,6 +72,7 @@ import MusicBriefPage from './pages/MusicBriefPage';
 import OneOnOneSessionPage from './pages/OneOnOneSessionPage';
 import DashboardHome from './pages/DashboardHome';
 import SubscriptionPage from './pages/SubscriptionPage';
+import CreateUsersPage from './pages/CreateUsersPage';
 
 export default function Router() {
   const routes = useRoutes([ 
@@ -83,6 +84,7 @@ export default function Router() {
       children: [
         { element: <Navigate to="/login" />, index: true },
         {path: 'home', element:<DashboardHome/>},
+        {path: 'users/create', element:<CreateUsersPage/>},
         {path: 'users', element:<UserListPage/>},
         { path: 'artists', element:<CardTemplatesPage/>/*<HomePage1 />*/ },
         { path: 'feed', element: <FeedPage /> },

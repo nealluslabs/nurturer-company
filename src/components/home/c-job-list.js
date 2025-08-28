@@ -18,7 +18,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { styled } from "@mui/styles";
 import { Button, Grid, makeStyles } from "@material-ui/core";
-import { Link, NavLink, useNavigate} from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //import SearchBar from "material-ui-search-bar";
 //import useRequest from "../../hooks/use-request";
 import { fetchJobs, getSingleStudent } from "../../redux/actions/job.action";
@@ -224,9 +224,7 @@ export default function CJobList({ jobs }) {
         <b>ALL USERS</b>   
       
       <Button
-                   
         type="button"
-        // fullWidth
         variant="contained"
         style={{
           background: "linear-gradient(to right, #000000, #333333)",
@@ -235,7 +233,7 @@ export default function CJobList({ jobs }) {
           fontSize: "15px",
         }}
         sx={{ mt: 7, mb: 2 }}
-        
+        onClick={() => navigate("/dashboard/users/create")}
       >
         Add User
       </Button></p><br/>
