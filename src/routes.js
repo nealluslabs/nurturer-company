@@ -88,7 +88,7 @@ export default function Router() {
         {path: 'users', element:<UserListPage/>},
         { path: 'artists', element:<CardTemplatesPage/>/*<HomePage1 />*/ },
         { path: 'feed', element: <FeedPage /> },
-        {path: 'subscriptions', element:<SubscriptionPage />},
+        {path: 'subscription', element:<SubscriptionPage />},
         { path: 'courses-stats', element: <CoursesStatsPage /> },
         { path: 'media', element: <NewslettersPage /> }, // <StudentListPage />
         { path: "announcement", element: <AnnouncementPage /> },

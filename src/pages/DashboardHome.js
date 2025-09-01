@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Navigate } from 'react-router-dom';
+import ReactApexChart from 'react-apexcharts';
 
 // Material-UI Icons
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -254,7 +255,7 @@ const DashboardHome = () => {
   if (!isAuth) return <Navigate to="/login" replace />;
 
   return (
-    <div style={{ margin: "30px", backgroundColor: "#f5f5f5" }}>
+    <div style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
       {/* Stats Cards */}
       <div style={{
         display: "grid",
@@ -286,13 +287,14 @@ const DashboardHome = () => {
                 textAlign: "center",
                 borderRadius: "6px",
                 cursor: clickable ? "pointer" : "default",
-                boxShadow: isTotalContacts
-                  ? "0 0 0 2px #03befc33"
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                border: isTotalContacts
+                  ? "2px solid #03befc33"
                   : isPendingTouchpoints
-                  ? "0 0 0 2px #ca03fc33"
+                  ? "2px solid #ca03fc33"
                   : isUpcomingEvents
-                  ? "0 0 0 2px #03bafc33"
-                  : undefined
+                  ? "2px solid #03bafc33"
+                  : "none"
               }}
               onClick={clickable ? handleClick : undefined}
             >
@@ -302,6 +304,59 @@ const DashboardHome = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Charts Section */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        gap: "20px",
+        margin: "26px 2px 20px 2px"
+      }}>
+        {/* Doughnut Chart */}
+        <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+          <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>User Distribution</h3>
+          <ReactApexChart
+            options={{
+              chart: { type: 'donut' },
+              labels: ['Active Users', 'Inactive Users', 'Pending Users'],
+              colors: ['#00E396', '#FEB019', '#FF4560'],
+              legend: { position: 'bottom' },
+              responsive: [{
+                breakpoint: 480,
+                options: {
+                  chart: { width: 200 },
+                  legend: { position: 'bottom' }
+                }
+              }]
+            }}
+            series={[44, 25, 31]}
+            type="donut"
+            height={300}
+          />
+        </div>
+
+        {/* Histogram */}
+        <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+          <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>Monthly Activity</h3>
+          <ReactApexChart
+            options={{
+              chart: { type: 'bar', toolbar: { show: false } },
+              xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] },
+              colors: ['#008FFB'],
+              plotOptions: {
+                bar: { borderRadius: 4, horizontal: false }
+              },
+              dataLabels: { enabled: false }
+            }}
+            series={[{
+              name: 'Activity',
+              data: [44, 55, 57, 56, 61, 58]
+            }]}
+            type="bar"
+            height={300}
+          />
+        </div>
       </div>
 
       {/* Main Content Grid */}
@@ -334,7 +389,7 @@ const DashboardHome = () => {
               </button>
             </div>
 
-            <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px" }}>
+            <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <event.mainIcon sx={{ width: 65, height: 65 }} />
               </div>
@@ -393,7 +448,7 @@ const DashboardHome = () => {
             </button>
           </div>
 
-          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px" }}>
+          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
             {touchpointData.length === 0 ? (
               <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No pending messages found.</div>
             ) : (
@@ -455,7 +510,7 @@ const DashboardHome = () => {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: 'flex', alignItems: "center" }}>
               <PersonAddAltIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
-              <h3>Recently Added Contacts</h3>
+              <h3>Recently Active Contacts</h3>
             </div>
             <button
               style={{
@@ -472,7 +527,7 @@ const DashboardHome = () => {
             </button>
           </div>
 
-          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px" }}>
+          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
             {recentContacts.length === 0 ? (
               <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No contacts found.</div>
             ) : (

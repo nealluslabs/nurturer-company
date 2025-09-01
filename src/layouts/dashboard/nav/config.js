@@ -24,8 +24,8 @@ const navConfig = [
   //   icon: <MdDashboard style={{ fontSize: '14px' }} />
   // },
   {
-    title: `Subscriptions`,
-    path: '/dashboard/subscriptions',
+    title: `Subscription`,
+    path: '/dashboard/subscription',
     icon: <FaCreditCard style={{ fontSize: '14px' }} />,
   },
   {

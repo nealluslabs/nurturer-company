@@ -6,7 +6,7 @@ const PremiumPlanContainer = () => {
 
     return (
         <div className="plan_row proper_box">
-            <SubscriptionHeader />
+            <SubscriptionHeader title="Annual Plan" />
             <div className="plan_split">
                     <div className="plan_split_column">
                         <PremiumDetails />

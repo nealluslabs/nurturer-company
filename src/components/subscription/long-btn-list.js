@@ -4,7 +4,7 @@ const LongButtonList = () => {
     const buttons = [
         { 
             id: 'vip', 
-            text: 'Upgrade to VIP', 
+            text: 'Change to Monthly', 
             background: '#000000', 
             color: '#ffffff' 
         },

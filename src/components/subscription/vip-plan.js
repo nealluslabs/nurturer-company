@@ -32,13 +32,13 @@ const VipPlan = () => {
         <div>
             <div className="plan_row proper_box">
                 <SubscriptionHeader 
-                    title="Vip Plan"
+                    title="Monthly Plan"
                     hide
                     popular
                 />
                 
                 <h1 className="amt_txt">
-                    $49.99/Month
+                    $1250/Month
                 </h1>
 
                 <div className="space_up_md">

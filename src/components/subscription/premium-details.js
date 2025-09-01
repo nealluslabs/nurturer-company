@@ -31,7 +31,7 @@ const PremiumDetails = () => {
     return (
         <div>
             <h1 className="amt_txt">
-                $29.99/Month
+                $12,000/Year
             </h1>
 
             <p className="sub_detail_sm_txt">

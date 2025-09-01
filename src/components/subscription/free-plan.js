@@ -22,12 +22,12 @@ const FreePlan = () => {
         <div>
             <div className="plan_row proper_box">
                 <SubscriptionHeader 
-                    title="Basic Plan"
+                    title="Annual Plan"
                     hide
                 />
 
                 <h1 className="amt_txt">
-                    Free
+                    $12,000/Year
                 </h1>
 
                 <div className="space_up_md">
@@ -49,7 +49,7 @@ const FreePlan = () => {
                     aria-disabled="true"
                     style={{ background: '#f3f4f6', color: '#9ca3af', cursor: 'not-allowed', marginTop: 12 }}
                 >
-                    Downgrade
+                    Change to Monthly
                 </button>
             </div>
         </div>
