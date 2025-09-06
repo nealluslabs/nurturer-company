@@ -19,6 +19,7 @@ export default function SettingsPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [copyButtonText, setCopyButtonText] = useState('Copy');
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
@@ -105,10 +106,64 @@ export default function SettingsPage() {
               </div>
             )}
 
+            <h2>Invite Link</h2>
+
+            <Grid container spacing={2} style={{position:"relative", marginTop:"2rem", marginBottom:"3rem"}}>
+              <Grid item xs={12} sm={8}>
+                <TextField
+                  label="Invite Link"
+                  value="https://nurturer-neallus.vercel.app/"
+                  fullWidth
+                  variant="outlined"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: '#000000',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: '#000000',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: '#000000',
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: "linear-gradient(to right, #000000, #333333)",
+                    color: "white",
+                    borderRadius: "12px",
+                    padding: "12px 24px",
+                    fontWeight: "bold",
+                    fontSize: "14px",
+                    fontFamily: "inter",
+                    height: "56px",
+                    width: "100%",
+                    '&:hover': {
+                      background: "linear-gradient(to right, #333333, #555555)",
+                    },
+                  }}
+                  onClick={() => {
+                    navigator.clipboard.writeText("https://nurturer-neallus.vercel.app/");
+                    setCopyButtonText('Copied');
+                    setTimeout(() => {
+                      setCopyButtonText('Copy');
+                    }, 3000);
+                  }}
+                >
+                  {copyButtonText}
+                </Button>
+              </Grid>
+            </Grid>
+
             <h2>Reset Password</h2>
             <br/>
 
-            <Grid container spacing={4} style={{position:"relative", marginTop:"2rem"}}>
+            <Grid container spacing={4} style={{position:"relative", marginTop:"2rem", boxShadow: "0 2px 8px rgba(0,0,0,0.1)", padding: "20px", borderRadius: "8px"}}>
               <Grid item xs={12} sm={6} style={{marginTop:"1rem"}}>
                 <TextField
                   label="Password"

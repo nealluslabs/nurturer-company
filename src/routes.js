@@ -82,7 +82,7 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/login" />, index: true },
+        { element: <Navigate to="/dashboard/home" />, index: true },
         {path: 'home', element:<DashboardHome/>},
         {path: 'users/create', element:<CreateUsersPage/>},
         {path: 'users', element:<UserListPage/>},

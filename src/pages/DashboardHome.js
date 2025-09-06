@@ -252,7 +252,8 @@ const DashboardHome = () => {
     }, 300);
   };
 
-  if (!isAuth) return <Navigate to="/login" replace />;
+  // Removed authentication check to allow free access
+  // if (!isAuth) return <Navigate to="/loginTest" replace />;
 
   return (
     <div style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
