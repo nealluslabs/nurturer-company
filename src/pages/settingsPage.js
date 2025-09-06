@@ -106,154 +106,168 @@ export default function SettingsPage() {
               </div>
             )}
 
-            <h2>Invite Link</h2>
+            <div style={{ 
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1)", 
+              padding: "20px", 
+              borderRadius: "8px",
+              margin: "2rem 0"
+            }}>
+              <h2 style={{ marginBottom: "21px" }}>Invite Link</h2>
 
-            <Grid container spacing={2} style={{position:"relative", marginTop:"2rem", marginBottom:"3rem"}}>
-              <Grid item xs={12} sm={8}>
-                <TextField
-                  label="Invite Link"
-                  value="https://nurturer-neallus.vercel.app/"
-                  fullWidth
-                  variant="outlined"
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: '#000000',
+              <Grid container spacing={2} style={{position:"relative", marginBottom:"3rem"}}>
+                <Grid item xs={12} sm={8}>
+                  <TextField
+                    label="Invite Link"
+                    value="https://nurturer-neallus.vercel.app/"
+                    fullWidth
+                    variant="outlined"
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#000000',
+                        },
                       },
-                      '&:hover fieldset': {
-                        borderColor: '#000000',
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      background: "linear-gradient(to right, #000000, #333333)",
+                      color: "white",
+                      borderRadius: "12px",
+                      padding: "12px 24px",
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                      fontFamily: "inter",
+                      height: "56px",
+                      width: "100%",
+                      '&:hover': {
+                        background: "linear-gradient(to right, #333333, #555555)",
                       },
-                      '&.Mui-focused fieldset': {
-                        borderColor: '#000000',
-                      },
-                    },
-                  }}
-                />
+                    }}
+                    onClick={() => {
+                      navigator.clipboard.writeText("https://nurturer-neallus.vercel.app/");
+                      setCopyButtonText('Copied');
+                      setTimeout(() => {
+                        setCopyButtonText('Copy');
+                      }, 3000);
+                    }}
+                  >
+                    {copyButtonText}
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={4}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    background: "linear-gradient(to right, #000000, #333333)",
-                    color: "white",
-                    borderRadius: "12px",
-                    padding: "12px 24px",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    fontFamily: "inter",
-                    height: "56px",
-                    width: "100%",
-                    '&:hover': {
-                      background: "linear-gradient(to right, #333333, #555555)",
-                    },
-                  }}
-                  onClick={() => {
-                    navigator.clipboard.writeText("https://nurturer-neallus.vercel.app/");
-                    setCopyButtonText('Copied');
-                    setTimeout(() => {
-                      setCopyButtonText('Copy');
-                    }, 3000);
-                  }}
-                >
-                  {copyButtonText}
-                </Button>
+            </div>
+
+            <div style={{ 
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1)", 
+              padding: "20px", 
+              borderRadius: "8px",
+              margin: "2rem 0"
+            }}>
+              <h2>Reset Password</h2>
+              <br/>
+
+              <Grid container spacing={4} style={{position:"relative", marginTop:"2rem"}}>
+                <Grid item xs={12} sm={6} style={{marginTop:"1rem"}}>
+                  <TextField
+                    label="Password"
+                    name="password"
+                    value={values.password}
+                    onChange={handleInputChange}
+                    fullWidth
+                    variant="outlined"
+                    type="password"
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#000000',
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    name="resetPassword"
+                    label="Reset Password"
+                    value={values.resetPassword}
+                    onChange={handleInputChange}
+                    fullWidth
+                    variant="outlined"
+                    type="password"
+                    multiline
+                    rows={2}
+                    maxRows={4}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#000000',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#000000',
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
 
-            <h2>Reset Password</h2>
-            <br/>
+              <br/>
+              <Divider>
+                <Chip label="😉 | 🔃" />
+              </Divider>
 
-            <Grid container spacing={4} style={{position:"relative", marginTop:"2rem", boxShadow: "0 2px 8px rgba(0,0,0,0.1)", padding: "20px", borderRadius: "8px"}}>
-              <Grid item xs={12} sm={6} style={{marginTop:"1rem"}}>
-                <TextField
-                  label="Password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleInputChange}
-                  fullWidth
-                  variant="outlined"
-                  type="password"
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: '#000000',
+              <Box 
+                display="flex" 
+                alignItems="center"
+                justifyContent="center"
+              >
+                <div>
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    variant="contained"
+                    sx={{
+                      background: "linear-gradient(to right, #000000, #333333)",
+                      color: "white",
+                      borderRadius: "12px",
+                      padding: "12px 24px",
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                      fontFamily: "inter",
+                      '&:hover': {
+                        background: "linear-gradient(to right, #333333, #555555)",
                       },
-                      '&:hover fieldset': {
-                        borderColor: '#000000',
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: '#000000',
-                      },
-                    },
-                  }}
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  name="resetPassword"
-                  label="Reset Password"
-                  value={values.resetPassword}
-                  onChange={handleInputChange}
-                  fullWidth
-                  variant="outlined"
-                  type="password"
-                  multiline
-                  rows={2}
-                  maxRows={4}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: '#000000',
-                      },
-                      '&:hover fieldset': {
-                        borderColor: '#000000',
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: '#000000',
-                      },
-                    },
-                  }}
-                />
-              </Grid>
-            </Grid>
-
-            <br/>
-            <Divider>
-              <Chip label="😉 | 🔃" />
-            </Divider>
-
-            <Box 
-              display="flex" 
-              alignItems="center"
-              justifyContent="center"
-            >
-              <div>
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  variant="contained"
-                  sx={{
-                    background: "linear-gradient(to right, #000000, #333333)",
-                    color: "white",
-                    borderRadius: "12px",
-                    padding: "12px 24px",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    fontFamily: "inter",
-                    '&:hover': {
-                      background: "linear-gradient(to right, #333333, #555555)",
-                    },
-                    '&:disabled': {
-                      background: "#cccccc",
-                      color: "#666666",
-                    }
-                  }}
-                >
-                  {isLoading ? 'Loading...' : 'Submit'}
-                </Button>
-              </div>
-            </Box>
+                      '&:disabled': {
+                        background: "#cccccc",
+                        color: "#666666",
+                      }
+                    }}
+                  >
+                    {isLoading ? 'Loading...' : 'Submit'}
+                  </Button>
+                </div>
+              </Box>
+            </div>
           </form>
         </Box>
       </Box>
