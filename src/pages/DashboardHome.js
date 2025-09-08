@@ -138,7 +138,7 @@ const DashboardHome = () => {
       id: 1,
       icon: GroupsIcon,
       count: allContacts ? allContacts.length : 0,
-      label: 'Total Contacts',
+      label: 'Total Users',
       color: '#03befc',
     },
     {
@@ -161,77 +161,6 @@ const DashboardHome = () => {
       count: 5,
       label: 'Smart Suggestions',
       color: '#03fc5a',
-    },
-  ];
-
-  const eventsData = [
-    {
-      id: 1,
-      headerIcon: CalendarMonthIcon,
-      headerTitle: "Upcoming Events (Next 7 Days)",
-      buttonText: "View All",
-      buttonColor: "#0367fc",
-      mainIcon: EventAvailableIcon,
-      mainText: "No upcoming events in the next 7 days",
-      subText: "Events help you stay connected with meaningful touchpoints",
-      actionKey: "Add Event to Contacts",
-      details: [
-        {
-          id: 1,
-          icon: CakeIcon,
-          iconColor: "#fce703",
-          title: "Birthdays",
-          description: "Personal connection opportunities",
-        },
-        {
-          id: 2,
-          icon: FavoriteIcon,
-          iconColor: "#fc0b03",
-          title: "Anniversaries",
-          description: "Celebrate meaningful milestones",
-        },
-        {
-          id: 3,
-          icon: CardGiftcardIcon,
-          iconColor: "#03c6fc",
-          title: "Custom Event",
-          description: "Company launches, conferences, or special dates",
-        },
-      ],
-    },
-    {
-      id: 2,
-      headerIcon: LightbulbIcon,
-      headerTitle: "Smart Suggestion",
-      buttonText: "View All",
-      buttonColor: "#26b502",
-      mainIcon: LightbulbIcon,
-      mainText: "No suggestion at the moment",
-      subText: "Smart suggestion help you stay proactive with client relationships",
-      actionKey: "View Automation Settings",
-      details: [
-        {
-          id: 1,
-          icon: EmailIcon,
-          iconColor: "#0335fc",
-          title: "Email Suggestions",
-          description: "Based on contact history and timing",
-        },
-        {
-          id: 2,
-          icon: CardGiftcardIcon,
-          iconColor: "#03fc5e",
-          title: "Card Suggestions",
-          description: "For birthday, holidays, and special occasions",
-        },
-        {
-          id: 3,
-          icon: InventoryIcon,
-          iconColor: "#03c6fc",
-          title: "Follow-up Reminders",
-          description: "Automated timing based on your settings",
-        },
-      ],
     },
   ];
 
@@ -265,7 +194,7 @@ const DashboardHome = () => {
       }}>
         {statsData.map((item) => {
           const IconComponent = item.icon;
-          const isTotalContacts = item.label === 'Total Contacts';
+          const isTotalContacts = item.label === 'Total Users';
           const isPendingTouchpoints = item.label === 'Pending Touchpoints';
           const isUpcomingEvents = item.label === 'Upcoming Events';
           
@@ -320,7 +249,7 @@ const DashboardHome = () => {
           <ReactApexChart
             options={{
               chart: { type: 'donut' },
-              labels: ['Active Users', 'Inactive Users', 'Pending Users'],
+              labels: ['Touches', 'Events', 'Newsletters'],
               colors: ['#00E396', '#FEB019', '#FF4560'],
               legend: { position: 'bottom' },
               responsive: [{
@@ -367,66 +296,6 @@ const DashboardHome = () => {
         gap: "16px",
         margin: "26px 2px"
       }}>
-        {/* Events Cards */}
-        {eventsData.map((event) => (
-          <div key={event.id}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <div style={{ display: 'flex', alignItems: "center"}}>
-                <event.headerIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
-                <h3>{event.headerTitle}</h3>
-              </div>
-              <button
-                style={{
-                  border: `2px solid ${event.buttonColor ? event.buttonColor : "grey"}`,
-                  padding: "4px 7px",
-                  borderRadius: "6px",
-                  color: `${event.buttonColor ? event.buttonColor : "grey"}`,
-                  background: "transparent",
-                  cursor: "pointer"
-                }}
-                onClick={event.headerTitle === "Upcoming Events (Next 7 Days)" ? () => navigate('/apps/inbox') : undefined}
-              >
-                {event.buttonText}
-              </button>
-            </div>
-
-            <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <event.mainIcon sx={{ width: 65, height: 65 }} />
-              </div>
-              <h3 style={{ textAlign: "center", marginTop: "2px", fontWeight: "600" }}>{event.mainText}</h3>
-              <p style={{ textAlign: "center", marginTop: "4px" }}>{event.subText}</p>
-
-              <div style={{ marginTop: "21px" }}>
-                {event.details.map((detail) => (
-                  <div key={detail.id} style={{ display: 'flex', marginBottom: '8px' }}>
-                    <detail.icon sx={{ width: 18, height: 18, marginRight: "10px", color: detail.iconColor }} />
-                    <p style={{ marginRight: "7px", fontWeight: "bold" }}>{detail.title}: </p>
-                    <p>{detail.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                style={{
-                  border: "2px solid #0367fc",
-                  padding: "4px 7px",
-                  marginTop: "24px",
-                  borderRadius: "6px",
-                  display: "block",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  color: "#0367fc",
-                  background: "transparent",
-                  cursor: "pointer"
-                }}
-              >
-                {event.actionKey}
-              </button>
-            </div>
-          </div>
-        ))}
-
         {/* Recent Touchpoints */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -506,12 +375,12 @@ const DashboardHome = () => {
           </div>
         </div>
 
-        {/* Recently Added Contacts */}
+        {/* Recently Active Users */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: 'flex', alignItems: "center" }}>
               <PersonAddAltIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
-              <h3>Recently Active Contacts</h3>
+              <h3>Recently Active Users</h3>
             </div>
             <button
               style={{
