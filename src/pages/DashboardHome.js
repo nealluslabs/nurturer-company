@@ -77,7 +77,7 @@ const DashboardHome = () => {
       {
         id: 'd1',
         title: 'Welcome message',
-        subtitle: 'System - welcome@company.com',
+        subtitle: 'System - support@nurturer.ai',
         status: 'Pending',
         statusColor: '#333',
         statusBackground: '#ffecb3',
@@ -88,7 +88,7 @@ const DashboardHome = () => {
       {
         id: 'd2',
         title: 'Follow-up request',
-        subtitle: 'Jane Doe - jane@example.com',
+        subtitle: 'System - support@nurturer.ai',
         status: 'Pending',
         statusColor: '#333',
         statusBackground: '#ffecb3',
@@ -98,14 +98,36 @@ const DashboardHome = () => {
       },
       {
         id: 'd3',
-        title: 'Demo invitation',
-        subtitle: 'Acme Corp - demo@acme.com',
+        title: 'Admin invitation',
+        subtitle: 'System - support@nurturer.ai',
         status: 'Pending',
         statusColor: '#333',
         statusBackground: '#ffecb3',
         icon: Mail,
         iconColor: '#1976d2',
         uid: 'acme'
+      },
+      {
+        id: 'd4',
+        title: 'Pending Request',
+        subtitle: 'System - support@nurturer.ai',
+        status: 'Pending',
+        statusColor: '#333',
+        statusBackground: '#ffecb3',
+        icon: Mail,
+        iconColor: '#1976d2',
+        uid: 'system2'
+      },
+      {
+        id: 'd5',
+        title: 'New User',
+        subtitle: 'System - support@nurturer.ai',
+        status: 'Pending',
+        statusColor: '#333',
+        statusBackground: '#ffecb3',
+        icon: Mail,
+        iconColor: '#1976d2',
+        uid: 'system3'
       }
     ];
   }
@@ -127,9 +149,11 @@ const DashboardHome = () => {
   if (recentContacts.length === 0) {
     const now = Date.now();
     recentContacts = [
-      { uid: 'u1', name: 'Alice Johnson', role: 'Customer', createdAt: now - 86400000, initials: 'AJ', photoUrl: null },
-      { uid: 'u2', name: 'Bob Smith', role: 'Partner', createdAt: now - 172800000, initials: 'BS', photoUrl: null },
-      { uid: 'u3', name: 'Carol Lee', role: 'Client', createdAt: now - 259200000, initials: 'CL', photoUrl: null }
+      { uid: 'u1', name: 'Alice Johnson', role: '', createdAt: now - 86400000, initials: 'AJ', photoUrl: null },
+      { uid: 'u2', name: 'Bob Smith', role: '', createdAt: now - 172800000, initials: 'BS', photoUrl: null },
+      { uid: 'u3', name: 'Carol Lee', role: '', createdAt: now - 259200000, initials: 'CL', photoUrl: null },
+      { uid: 'u4', name: 'Gina Franklin', role: '', createdAt: now - 345600000, initials: 'GF', photoUrl: null },
+      { uid: 'u5', name: 'Frank Edward', role: '', createdAt: now - 432000000, initials: 'FE', photoUrl: null }
     ];
   }
 
@@ -245,7 +269,7 @@ const DashboardHome = () => {
       }}>
         {/* Doughnut Chart */}
         <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-          <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>User Distribution</h3>
+          <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>Email Distribution</h3>
           <ReactApexChart
             options={{
               chart: { type: 'donut' },
@@ -301,7 +325,7 @@ const DashboardHome = () => {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: 'flex', alignItems: "center" }}>
               <SendIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
-              <h3>Recent Touchpoints</h3>
+              <h3>Recent Tickets</h3>
             </div>
             <button
               style={{
@@ -326,22 +350,12 @@ const DashboardHome = () => {
                 const IconComponent = item.icon;
                 return (
                   <div
-                    onClick={() => {
-                      console.log("FROM DASHBOARD, THE USER WE SELECTED IS -->", allContacts.filter((contact) => (contact.uid === item.uid))[0]);
-                      // Uncomment when you have the action
-                      // dispatch(setCurrentChat(
-                      //   allContacts.filter((contact) => (contact.uid === item.uid))[0]
-                      // ));
-
-                      setTimeout(() => { navigate('/apps/inbox'); }, 300);
-                    }}
                     key={item.id}
                     style={{
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      marginBottom: "16px",
-                      cursor: "pointer"
+                      marginBottom: "16px"
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center" }}>
@@ -419,11 +433,7 @@ const DashboardHome = () => {
                     }}
                   >
                     <div
-                      style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
-                      onClick={() => {
-                        console.log("FILTERED USERS FROM DASHBOARD-->", user);
-                        resortFilteredUsersAndPush(user.uid);
-                      }}
+                      style={{ display: "flex", alignItems: "center", width: "100%" }}
                     >
                       {photoUrl ? (
                         <img
@@ -457,9 +467,8 @@ const DashboardHome = () => {
                           {initials}
                         </div>
                       )}
-                      <div>
-                        <p style={{ fontSize: "14px", fontWeight: "bold" }}>{name}</p>
-                        <p style={{ fontSize: "12px" }}>{role}</p>
+                      <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+                        <p style={{ fontSize: "14px", fontWeight: "bold", margin: 0 }}>{name}</p>
                       </div>
                     </div>
                     <p
