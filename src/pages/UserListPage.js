@@ -88,7 +88,7 @@ function TablePaginationActions(props) {
 // Styled table cell (copied from c-job-list)
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#000000',
+    backgroundColor: '#fff',
     color: theme?.palette?.common?.white || '#ffffff',
     width: '25%',
     textAlign: 'center',

@@ -180,13 +180,14 @@ export default function CreateUsersPage() {
                   disabled={isLoading}
                   variant="contained"
                   sx={{
-                    background: "linear-gradient(to right, #000000, #333333)",
+                    background: "#20dbe4",
                     color: "white",
                     borderRadius: "12px",
                     padding: "12px 24px",
                     fontWeight: "bold",
                     fontSize: "14px",
                     fontFamily: "inter",
+                    marginTop: '1.5rem',
                     '&:hover': {
                       background: "linear-gradient(to right, #333333, #555555)",
                     },

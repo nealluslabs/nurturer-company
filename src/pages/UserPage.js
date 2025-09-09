@@ -179,7 +179,7 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             Jobs
           </Typography>
-          <Button variant="contained" style={{backgroundColor: "black"}} startIcon={<Iconify icon="eva:plus-fill" />}>
+          <Button variant="contained" style={{backgroundColor: "white"}} startIcon={<Iconify icon="eva:plus-fill" />}>
             Add Job
           </Button>
         </Stack>
