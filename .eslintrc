@@ -41,6 +41,7 @@
                 "trailingComma": "es5",
                 "useTabs": false,
                 "endOfLine": "auto",
+                { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
             }
         ],
         "react/jsx-filename-extension": [

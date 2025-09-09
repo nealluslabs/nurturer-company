@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { 
   Box, 
   Typography, 
@@ -9,18 +9,31 @@ import {
   Divider, 
   Chip 
 } from "@mui/material";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function SettingsPage() {
   const [values, setValues] = useState({
     password: '',
     resetPassword: ''
   });
+
+  const { user} = useSelector((state) => state.auth);
+
+
+const [userLocal, setUserLocal] = useState(user)
+console.log("who is our logged in userLocal-->",userLocal)
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [copyButtonText, setCopyButtonText] = useState('Copy');
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(user){
+      setUserLocal(user)
+      console.log("who is our logged in userLocal-->",userLocal)
+    }
+  },user)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -118,7 +131,12 @@ export default function SettingsPage() {
                 <Grid item xs={12} sm={8}>
                   <TextField
                     label="Invite Link"
-                    value="https://nurturer-neallus.vercel.app/"
+                    value={userLocal && userLocal.companyID ?
+                      `https://nurturer-neallus.vercel.app/${userLocal && userLocal.companyID}`
+                      :
+                      "https://nurturer-neallus.vercel.app"
+                    }
+                    
                     fullWidth
                     variant="outlined"
                     sx={{
@@ -202,7 +220,7 @@ export default function SettingsPage() {
                   />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} style={{position:"relative", marginTop:"1rem"}}>
                   <TextField
                     name="resetPassword"
                     label="Reset Password"
@@ -211,9 +229,8 @@ export default function SettingsPage() {
                     fullWidth
                     variant="outlined"
                     type="password"
-                    multiline
-                    rows={2}
-                    maxRows={4}
+                    
+                    
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         '& fieldset': {
