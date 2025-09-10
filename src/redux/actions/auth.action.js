@@ -1,5 +1,5 @@
 import { db, fb, auth,provider, storage } from '../../config/firebase';
-import { clearUser, loginFailed, loginSuccess, logoutFxn, signupPending, signupFailed, storeUserData,storeProfileImages, isItLoading } from '../reducers/auth.slice';
+import { clearUser, loginFailed, loginSuccess, logoutFxn, signupPending, signupFailed, storeUserData,storeCompanyData,storeProfileImages, isItLoading } from '../reducers/auth.slice';
 import { v4 as uuidv4 } from 'uuid';
 import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
 import { clearGroup } from '../reducers/group.slice';
@@ -136,6 +136,21 @@ export const fetchUserData = (id, type, navigate) => async (dispatch) => {
   if (doc.exists) {
     // console.log("User Data:", doc.data());
     dispatch(storeUserData(doc.data()));
+
+
+    const companyRef = db
+    .collection("companies")
+    .where("companyID", "==", doc.data().companyID)
+    .limit(1);
+  
+  companyRef.get().then((querySnapshot) => {
+    if (!querySnapshot.empty) {
+      const companyDoc = querySnapshot.docs[0];
+      dispatch(storeCompanyData(companyDoc.data()));
+    }
+  });
+
+
     if(type === "sigin"){
      
       notifySuccessFxn("Logged In😊");

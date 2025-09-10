@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
        user: null,
+       company:null,
        error: '',
        message: '',
       isLoading: false,
@@ -33,6 +34,9 @@ const loginSlice = createSlice({
       },
       storeUserData: (state, action) => {
         state.user = action.payload;
+      },
+      storeCompanyData: (state, action) => {
+        state.company = action.payload;
       },
       storeProfileImages: (state, action) => {
         state.profileImages = action.payload;
@@ -68,6 +72,7 @@ export const {
  signupPending,
  signupFailed,
  storeUserData,
+ storeCompanyData,
  storeProfileImages,
  clearUser,
  logoutFxn,

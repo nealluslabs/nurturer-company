@@ -5,25 +5,21 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const features = [
     { 
-        id: 'all_premium', 
-        text: 'All Premium Features', 
+        id: 'all_basic', 
+        text: 'All Basic Features', 
         icon: IoIosCheckmarkCircleOutline 
     },
     { 
-        id: 'personal_barber', 
-        text: 'Personal Barber Assignment', 
+        id: 'email_reminders', 
+        text: 'Email Reminders', 
         icon: IoIosCheckmarkCircleOutline 
     },
     { 
-        id: 'home_service', 
-        text: 'Home Service Option', 
+        id: '247_support', 
+        text: '24/7 Support', 
         icon: IoIosCheckmarkCircleOutline 
     },
-    { 
-        id: 'concierge_support', 
-        text: 'Concierge support', 
-        icon: IoIosCheckmarkCircleOutline 
-    },
+  
 ];
 
 const VipPlan = () => {
@@ -38,7 +34,7 @@ const VipPlan = () => {
                 />
                 
                 <h1 className="amt_txt">
-                    $1250/Month
+                    $1,250/Monthly
                 </h1>
 
                 <div className="space_up_md">
@@ -59,7 +55,7 @@ const VipPlan = () => {
                     aria-label="Downgrade"
                     style={{ marginTop: 12 }}
                 >
-                    Upgrade to VIP
+                    Change To Monthly
                 </button>
             </div>
         </div>

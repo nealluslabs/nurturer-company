@@ -171,7 +171,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> CMC | COMPANY </title>
+        <title> NURTURER - Company </title>
       </Helmet>
 
       <Container>

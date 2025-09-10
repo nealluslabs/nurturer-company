@@ -119,7 +119,7 @@ const allPackCards = packs?.length ? (
   return (
     <>
       <Helmet>
-        <title> Bonecole Admin | Blog </title>
+        <title> NURTURER - Company </title>
       </Helmet>
       <Container maxWidth="xl">
         

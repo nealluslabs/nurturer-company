@@ -60,7 +60,7 @@ const allVideosData2 = videosData2?.length ? (
   return (
     <>
       <Helmet>
-        <title> CMC | DOCS </title>
+        <title> NURTURER - Company </title>
       </Helmet>
       <Container maxWidth="xl">
           {

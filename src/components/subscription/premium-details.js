@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import ServiceMessage from "./service-message";
 
 // Icons
@@ -5,25 +6,28 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const PremiumDetails = () => {
 
+    const { user,company} = useSelector((state) => state.auth);
+    
+
     const features = [
         { 
-            id: 'priority', 
-            text: 'Priority booking', 
+            id: 'premium_features', 
+            text: 'All Premium Features', 
             icon: IoIosCheckmarkCircleOutline 
         },
         { 
-            id: '20%_off', 
-            text: '20% off all services', 
+            id: 'email_reminder', 
+            text: 'Email Reminders', 
             icon: IoIosCheckmarkCircleOutline 
         },
         { 
-            id: 'free_product', 
-            text: 'Free product samples', 
+            id: 'annual_plan', 
+            text: '20% Off Annual Plan', 
             icon: IoIosCheckmarkCircleOutline 
         },
         { 
-            id: 'exclusive_member', 
-            text: 'Exclusive member events', 
+            id: 'concierge_support', 
+            text: 'Concierge Support', 
             icon: IoIosCheckmarkCircleOutline 
         },
     ];
@@ -31,11 +35,11 @@ const PremiumDetails = () => {
     return (
         <div>
             <h1 className="amt_txt">
-                $12,000/Year
+                $12,000/Annually
             </h1>
 
             <p className="sub_detail_sm_txt">
-                Next billing: February 25, 2025 <br/>
+                Next billing: {company? company.subscriptionExpiration:"February 25, 2025"} <br/>
                 Payment method: Visa **** 1234
             </p>
 

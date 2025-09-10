@@ -5,13 +5,23 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const features = [
     { 
-        id: 'online_booking', 
-        text: 'Online booking', 
+        id: 'premium_features', 
+        text: 'All Premium Features', 
         icon: IoIosCheckmarkCircleOutline 
     },
     { 
         id: 'email_reminder', 
         text: 'Email Reminders', 
+        icon: IoIosCheckmarkCircleOutline 
+    },
+    { 
+        id: 'annual_plan', 
+        text: '20% Off Annual Plan', 
+        icon: IoIosCheckmarkCircleOutline 
+    },
+    { 
+        id: 'concierge_support', 
+        text: 'Concierge Support', 
         icon: IoIosCheckmarkCircleOutline 
     },
 ];
@@ -27,7 +37,7 @@ const FreePlan = () => {
                 />
 
                 <h1 className="amt_txt">
-                    $12,000/Year
+                    $12,000/Annually
                 </h1>
 
                 <div className="space_up_md">
@@ -49,7 +59,7 @@ const FreePlan = () => {
                     aria-disabled="true"
                     style={{ background: '#f3f4f6', color: '#9ca3af', cursor: 'not-allowed', marginTop: 12 }}
                 >
-                    Change to Monthly
+                    Change to Annually
                 </button>
             </div>
         </div>
