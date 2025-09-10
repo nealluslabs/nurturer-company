@@ -1,24 +1,23 @@
-
 import React, { useState } from "react";
-import { 
-  Box, 
-  Typography, 
-  Alert, 
-  Button, 
-  Grid, 
-  TextField, 
-  Divider, 
-  Chip 
+import {
+  Box,
+  Typography,
+  Alert,
+  Button,
+  Grid,
+  TextField,
+  Divider,
+  Chip,
 } from "@mui/material";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
 export default function CreateUsersPage() {
   const [values, setValues] = useState({
-    email: '',
-    confirmEmail: ''
+    email: "",
+    confirmEmail: "",
   });
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -26,7 +25,7 @@ export default function CreateUsersPage() {
     const { name, value } = e.target;
     setValues({
       ...values,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -36,13 +35,13 @@ export default function CreateUsersPage() {
     // Add your submit logic here
     setTimeout(() => {
       setIsLoading(false);
-      setMessage('User created successfully!');
+      setMessage("User created successfully!");
     }, 2000);
   };
 
   const resetMsg = () => {
-    setError('');
-    setMessage('');
+    setError("");
+    setMessage("");
   };
 
   return (
@@ -50,67 +49,77 @@ export default function CreateUsersPage() {
       <Box mx={2} pr={4} mt={0.5}>
         <Box sx={{ width: "100%", margin: "2px 0" }}>
           <Typography
-            sx={{ 
-              fontFamily: "inter", 
-              fontWeight: "bold", 
-              fontSize: "18px", 
-              display: "inline-block", 
-              borderBottom: "2px solid #000000" 
+            sx={{
+              fontFamily: "inter",
+              fontWeight: "bold",
+              fontSize: "18px",
+              display: "inline-block",
+              borderBottom: "2px solid #000000",
             }}
             mb={3}
             px={0.5}
-          >CREATE USER</Typography>
+          >
+            Add USER
+          </Typography>
 
           <form onSubmit={handleSubmit}>
             {error && (
               <div>
                 <Alert
-                  severity="error" 
+                  severity="error"
                   color="error"
                   action={
-                    <Button 
-                      color="inherit" 
-                      size="small" 
-                      style={{ fontSize: '15px' }} 
+                    <Button
+                      color="inherit"
+                      size="small"
+                      style={{ fontSize: "15px" }}
                       onClick={resetMsg}
                     >
                       <b>X</b>
                     </Button>
                   }
                 >
-                  <p style={{ fontSize: '11px' }}><b>{error}</b></p>
+                  <p style={{ fontSize: "11px" }}>
+                    <b>{error}</b>
+                  </p>
                 </Alert>
-                <br/>
+                <br />
               </div>
             )}
 
             {message && (
               <div>
                 <Alert
-                  severity="success" 
+                  severity="success"
                   color="success"
                   action={
-                    <Button 
-                      color="inherit" 
-                      size="small" 
-                      style={{ fontSize: '15px' }} 
+                    <Button
+                      color="inherit"
+                      size="small"
+                      style={{ fontSize: "15px" }}
                       onClick={resetMsg}
                     >
                       <b>X</b>
                     </Button>
                   }
                 >
-                  <p style={{ fontSize: '11px' }}><b>{message}</b></p>
+                  <p style={{ fontSize: "11px" }}>
+                    <b>{message}</b>
+                  </p>
                 </Alert>
-                <br/>
+                <br />
               </div>
             )}
 
-            <h2>Create New User</h2>
-            <br/>
+            <h2>Add New User</h2>
+            <br />
 
-            <Grid container spacing={4} style={{position:"relative", marginTop:"2rem"}}>
-              <Grid item xs={12} sm={6} style={{marginTop:"1rem"}}>
+            <Grid
+              container
+              spacing={4}
+              style={{ position: "relative", marginTop: "2rem" }}
+            >
+              <Grid item xs={12} sm={6} style={{ marginTop: "1rem" }}>
                 <TextField
                   label="Email Address"
                   name="email"
@@ -120,22 +129,28 @@ export default function CreateUsersPage() {
                   variant="outlined"
                   type="email"
                   sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: '#000000',
+                    "& .MuiOutlinedInput-root": {
+                      height: "52px",
+                      "& input": {
+                        height: "100%",
+                        padding: "0 14px",
+                        boxSizing: "border-box",
                       },
-                      '&:hover fieldset': {
-                        borderColor: '#000000',
+                      "& fieldset": {
+                        borderColor: "#000000",
                       },
-                      '&.Mui-focused fieldset': {
-                        borderColor: '#000000',
+                      "&:hover fieldset": {
+                        borderColor: "#000000",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#000000",
                       },
                     },
                   }}
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} style={{ marginTop: "1rem" }}>
                 <TextField
                   name="confirmEmail"
                   label="Confirm Email Address"
@@ -144,19 +159,25 @@ export default function CreateUsersPage() {
                   fullWidth
                   variant="outlined"
                   type="email"
-                  multiline
-                  rows={2}
-                  maxRows={4}
+                  // multiline
+                  // rows={2}
+                  // maxRows={4}
                   sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: '#000000',
+                    "& .MuiOutlinedInput-root": {
+                      height: "52px",
+                      "& input": {
+                        height: "100%",
+                        padding: "0 14px",
+                        boxSizing: "border-box",
                       },
-                      '&:hover fieldset': {
-                        borderColor: '#000000',
+                      "& fieldset": {
+                        borderColor: "#000000",
                       },
-                      '&.Mui-focused fieldset': {
-                        borderColor: '#000000',
+                      "&:hover fieldset": {
+                        borderColor: "#000000",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#000000",
                       },
                     },
                   }}
@@ -164,16 +185,12 @@ export default function CreateUsersPage() {
               </Grid>
             </Grid>
 
-            <br/>
+            <br />
             <Divider>
               <Chip label="📧 | ➕" />
             </Divider>
 
-            <Box 
-              display="flex" 
-              alignItems="center"
-              justifyContent="center"
-            >
+            <Box display="flex" alignItems="center" justifyContent="center">
               <div>
                 <Button
                   type="submit"
@@ -187,17 +204,17 @@ export default function CreateUsersPage() {
                     fontWeight: "bold",
                     fontSize: "14px",
                     fontFamily: "inter",
-                    marginTop: '1.5rem',
-                    '&:hover': {
+                    marginTop: "1.5rem",
+                    "&:hover": {
                       background: "linear-gradient(to right, #333333, #555555)",
                     },
-                    '&:disabled': {
+                    "&:disabled": {
                       background: "#cccccc",
                       color: "#666666",
-                    }
+                    },
                   }}
                 >
-                  {isLoading ? 'Loading...' : 'Create User'}
+                  {isLoading ? "Loading..." : "Add User"}
                 </Button>
               </div>
             </Box>
