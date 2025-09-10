@@ -59,7 +59,7 @@ export default function CreateUsersPage() {
             mb={3}
             px={0.5}
           >
-            Add USER
+            Add User
           </Typography>
 
           <form onSubmit={handleSubmit}>
