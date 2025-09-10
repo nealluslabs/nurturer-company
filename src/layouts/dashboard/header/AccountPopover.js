@@ -9,7 +9,7 @@ import account from '../../../_mock/account';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'src/redux/actions/auth.action';
 import { useNavigate } from 'react-router-dom';
-import randomGuy from 'src/assets/images/random-guy.jpg'
+import nurturerlogo from 'src/assets/images/bridgetechlogo.png'
 
 // ----------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={user?user.imageUrl:randomGuy} alt="photoURL" />
+        <Avatar src={/*?user.imageUrl:*/nurturerlogo} alt="photoURL" />
       </IconButton>
       <Popover
         open={Boolean(open)}

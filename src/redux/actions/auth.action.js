@@ -154,7 +154,10 @@ export const fetchUserData = (id, type, navigate) => async (dispatch) => {
     if(type === "sigin"){
      
       notifySuccessFxn("Logged In😊");
+      setTimeout(()=>{ 
       navigate('/dashboard/home', { replace: true });
+    }
+      ,1000)
     }
   } else {
      

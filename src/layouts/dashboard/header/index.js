@@ -8,6 +8,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 // components
 import Iconify from '../../../components/iconify';
 import AccountPopover from './AccountPopover';
+import { useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +47,8 @@ Header.propTypes = {
 export default function Header({ onOpenNav }) {
   const [searchMode, setSearchMode] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+
+  const {user,company} = useSelector((state)=>(state.auth))
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -78,10 +81,10 @@ export default function Header({ onOpenNav }) {
             <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
               <Box sx={{ textAlign: 'right', mr: 2 }}>
                 <Typography sx={{ fontSize: '14px', fontWeight: 600, color: '#333', lineHeight: 1.2 }}>
-                  Demo User
+                 { user && user.companyName?user.companyName:"Demo User"}
                 </Typography>
                 <Typography sx={{ fontSize: '12px', color: '#666', lineHeight: 1.2 }}>
-                  User
+                { user && user.name?user.name:"User"}
                 </Typography>
               </Box>
               <AccountPopover />

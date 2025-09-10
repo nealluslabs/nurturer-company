@@ -23,7 +23,7 @@ const DashboardHome = () => {
   const navigate = useNavigate();
   
   // Mock selectors - you'll need to replace these with your actual Redux selectors
-  const { isAuth, user } = useSelector((state) => state.login || { isAuth: true, user: { uid: 'test' } });
+  const { isAuth, user } = useSelector((state) => state.auth || { isAuth: true/*, user: { uid: 'test' }*/ });
   const { allUsers, isLoading } = useSelector((state) => state.user || { allUsers: [], isLoading: false });
   const { allContacts = [], filteredContacts = [] } = useSelector((state) => state.user || {});
   
@@ -35,6 +35,15 @@ const DashboardHome = () => {
       // dispatch(fetchAllContactForOneUser(user.uid));
     }
   }, [user, dispatch]);
+
+
+  useEffect(() => {
+
+    console.log("DAHSBOARD PAGE ,user is --->",user)
+    if (!user) {
+     navigate('/loginTest')
+    }
+  }, [user]);
 
   // Process touchpoint data
   let touchpointData = [];
