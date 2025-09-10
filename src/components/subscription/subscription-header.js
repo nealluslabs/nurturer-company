@@ -15,13 +15,13 @@ const SubscriptionHeader = ({ title, hide, popular }) => {
                     popular && 
                     <p 
                         style={{ marginLeft: "8px" }} 
-                        className="plan_button"
+                        className="plan_button bg-[#20dbe4] !bg-[#20dbe4]"
                     >Popular</p>
                 }
             </div>
 
             {
-                !hide && <p className="plan_button">Current Plan</p>
+                !hide && <p className="plan_button bg-[#20dbe4] !bg-[#20dbe4]">Current Plan</p>
             }
         </div>
     )

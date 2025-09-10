@@ -51,7 +51,7 @@ const VipPlan = () => {
 
                 <button
                     type="button"
-                    className="long_btn btn-vip"
+                    className="long_btn btn-vip bg-[#20dbe4] !bg-[#20dbe4]"
                     aria-label="Downgrade"
                     style={{ marginTop: 12 }}
                 >

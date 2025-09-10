@@ -158,7 +158,7 @@ console.log("who is our logged in userLocal-->",userLocal)
                   <Button
                     variant="contained"
                     sx={{
-                      background: "linear-gradient(to right, #000000, #333333)",
+                      background: "#20dbe4",
                       color: "white",
                       borderRadius: "12px",
                       padding: "12px 24px",
@@ -257,6 +257,7 @@ console.log("who is our logged in userLocal-->",userLocal)
                 display="flex" 
                 alignItems="center"
                 justifyContent="center"
+                marginTop="1.5rem"
               >
                 <div>
                   <Button
@@ -264,7 +265,7 @@ console.log("who is our logged in userLocal-->",userLocal)
                     disabled={isLoading}
                     variant="contained"
                     sx={{
-                      background: "linear-gradient(to right, #000000, #333333)",
+                      background: "#20dbe4",
                       color: "white",
                       borderRadius: "12px",
                       padding: "12px 24px",
