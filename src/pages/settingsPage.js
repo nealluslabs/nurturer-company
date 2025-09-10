@@ -132,9 +132,9 @@ console.log("who is our logged in userLocal-->",userLocal)
                   <TextField
                     label="Invite Link"
                     value={userLocal && userLocal.companyID ?
-                      `https://nurturer-neallus.vercel.app/${userLocal && userLocal.companyID}`
+                      `https://www.nurturer.ai/register/${userLocal && userLocal.companyID}`
                       :
-                      "https://nurturer-neallus.vercel.app"
+                      "https://www.nurturer.ai/register"
                     }
                     
                     fullWidth
@@ -172,11 +172,29 @@ console.log("who is our logged in userLocal-->",userLocal)
                       },
                     }}
                     onClick={() => {
-                      navigator.clipboard.writeText("https://nurturer-neallus.vercel.app/");
+ 
+
+                      if(userLocal && userLocal.companyID){
+                     
+
+                      navigator.clipboard.writeText(`https://www.nurturer.ai/register/${userLocal && userLocal.companyID}`);
                       setCopyButtonText('Copied');
                       setTimeout(() => {
                         setCopyButtonText('Copy');
                       }, 3000);
+
+                    }
+                      else{
+                      
+                      navigator.clipboard.writeText("https://www.nurturer.ai/register/");
+                      setCopyButtonText('Copied');
+                      setTimeout(() => {
+                        setCopyButtonText('Copy');
+                      }, 3000);
+                     
+                      }
+
+
                     }}
                   >
                     {copyButtonText}
