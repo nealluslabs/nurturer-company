@@ -23,12 +23,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 //import useRequest from "../../hooks/use-request";
 import { fetchJobs, getSingleStudent } from "../../redux/actions/job.action";
 import { fetchAllUsers } from "../../redux/actions/user.action";
-import Skeleton from '@mui/material/Skeleton';
-import {Typography,CardMedia,} from '@material-ui/core';
+import Skeleton from "@mui/material/Skeleton";
+import { Typography, CardMedia } from "@material-ui/core";
 //import CoolerBoxIMG from '../../assets/images/save-money.png';
 
-import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
-
+import { notifyErrorFxn, notifySuccessFxn } from "src/utils/toast-fxn";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -98,15 +97,19 @@ function TablePaginationActions(props) {
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#20dbe4',
+    backgroundColor: "#20dbe4",
     color: theme.palette.common.white,
-    width: '33.33%',
-    textAlign: 'center',
+    width: "24%",
+    textAlign: "left",
+    padding: "8px 16px",
+    //  border: '1px solid #ddd',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    width: '33.33%',
-    textAlign: 'center',
+    width: "24%",
+    textAlign: "left",
+    padding: "8px 16px",
+    //  border: '1px solid #ddd',
   },
 }));
 
@@ -119,8 +122,8 @@ TablePaginationActions.propTypes = {
 
 const originalJobList = [
   { id: 1, title: "Java Developer", fulldate: "01/01/2022" },
-  { id: 2, title: "MERN Stack Developer", fulldate: "01/01/2022"},
-  { id: 3, title: "Flutter Developer", fulldate: "01/01/2022"},
+  { id: 2, title: "MERN Stack Developer", fulldate: "01/01/2022" },
+  { id: 3, title: "Flutter Developer", fulldate: "01/01/2022" },
 ].sort((a, b) => (a.title < b.title ? -1 : 1));
 
 const useStyles = makeStyles({
@@ -135,7 +138,6 @@ export default function CJobList({ jobs }) {
   const [jobList, setJobList] = useState(jobs);
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-
 
   useEffect(() => {
     // Fetch users from firebase using redux action (pattern used in codebase)
@@ -184,144 +186,184 @@ export default function CJobList({ jobs }) {
     setPage(0);
   };
   const viewStudentFxn = (id) => {
+    setLoading(true);
+    dispatch(getSingleStudent(id));
 
-    setLoading(true)
-    dispatch(getSingleStudent(id))
-
-   setTimeout(() =>{navigate(`/dashboard/student-stats/`,{ state: { id:id } })},2500);
+    setTimeout(() => {
+      navigate(`/dashboard/student-stats/`, { state: { id: id } });
+    }, 2500);
   };
 
   const deleteJobFxn = (id) => {
-   const preserveId = id
-    
-  if(window.confirm("are you sure you want to delete this user?")){
-   
-    //dispatch(deleteSingleJob(id)); 
-    
-    notifySuccessFxn("Employee Successfully Deleted!");
-    
-   setTimeout(function(){window.location.reload()},3000);
-     
-  }
-}
-  
+    const preserveId = id;
 
+    if (window.confirm("are you sure you want to delete this user?")) {
+      //dispatch(deleteSingleJob(id));
 
+      notifySuccessFxn("Employee Successfully Deleted!");
+
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
+    }
+  };
 
   return (
     <>
-        {
-          jobs ? 
-          <>
-       
-      
-      <br/>
-      <p 
-        style={{
-          fontSize: '26px', marginLeft: '5px',marginBottom:"1rem", color: 'black',display:"flex",justifyContent:"space-between"
-        }}
-      >
-        <b>ALL USERS</b>   
-      
-      <Button
-        type="button"
-        variant="contained"
-        style={{
-          background: "#20dbe4",
-          color: "white",
-          width: "17%",
-          fontSize: "15px",
-        }}
-        sx={{ mt: 7, mb: 2 }}
-        onClick={() => navigate("/dashboard/users/create")}
-      >
-        Add User
-      </Button></p><br/>
-      <hr />
-      <TableContainer component={Paper}>
-        <Table sx={{ maxWidth: 1500,tableLayout:"fixed" }} aria-label="custom pagination table">
-          <TableHead >
-            <TableRow style={{backgroundColor: "#20dbe4"}}>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="right">Email</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-              {/*<StyledTableCell align="right">Industry</StyledTableCell>
-              <StyledTableCell align="center">State</StyledTableCell>*/}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {(rowsPerPage > 0
-              ? jobs.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
-              : jobs
-            ).map((job) => (
-              <TableRow key={job.id || Math.random()}>
-                <StyledTableCell component="th" scope="row">
-                  {job.fullName
-                    || (job.firstName && job.lastName && `${job.firstName} ${job.lastName}`)
-                    || job.displayName
-                    || job.name
-                    || job.username
-                    || job.title
-                    || job.email
-                    || "-"}
-                </StyledTableCell>
-                <StyledTableCell>
-                  {job.email || "-"}
-                </StyledTableCell>
-                <StyledTableCell>
-                  {job.registeredOn && typeof job.registeredOn !== "string"
-                    ? new Date(job.registeredOn.seconds * 1000).toDateString()
-                    : (job.accountCreated && typeof job.accountCreated !== "string"
-                        ? new Date(job.accountCreated.seconds * 1000).toDateString()
-                        : (typeof job.accountCreated === "string" && job.accountCreated)
-                      ) || job.fulldate || "-"}
-                </StyledTableCell>
-              </TableRow>
-            ))}
+      {jobs ? (
+        <>
+          <br />
+          <p
+            style={{
+              fontSize: "26px",
+              marginLeft: "5px",
+              marginBottom: "1rem",
+              color: "black",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <b>ALL USERS</b>
 
-            {/*emptyRows > 0 && (
+            <Button
+              type="button"
+              variant="contained"
+              style={{
+                background: "#20dbe4",
+                color: "white",
+                width: "17%",
+                fontSize: "15px",
+              }}
+              sx={{ mt: 7, mb: 2 }}
+              onClick={() => navigate("/dashboard/users/create")}
+            >
+              Add User
+            </Button>
+          </p>
+          <br />
+          <hr />
+          <TableContainer component={Paper}>
+            <Table
+              sx={{ width: "100%", tableLayout: "fixed" }}
+              aria-label="custom pagination table"
+            >
+              <TableHead>
+                <TableRow style={{ backgroundColor: "#20dbe4" }}>
+                  <StyledTableCell align="left" >
+                    Name
+                  </StyledTableCell>
+                  <StyledTableCell align="left" >
+                    Email
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    Date
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    
+                  </StyledTableCell>
+                  {/*<StyledTableCell align="right">Industry</StyledTableCell>
+              <StyledTableCell align="center">State</StyledTableCell>*/}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {(rowsPerPage > 0
+                  ? jobs.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : jobs
+                ).map((job) => (
+                  <TableRow key={job.id || Math.random()}>
+                    <StyledTableCell >
+                      {job.fullName ||
+                        (job.firstName &&
+                          job.lastName &&
+                          `${job.firstName} ${job.lastName}`) ||
+                        job.displayName ||
+                        job.name ||
+                        job.username ||
+                        job.title ||
+                        job.email ||
+                        "-"}
+                    </StyledTableCell>
+                    <StyledTableCell >
+                      {job.email || "-"}
+                    </StyledTableCell>
+                    <StyledTableCell >
+                      {job.registeredOn && typeof job.registeredOn !== "string"
+                        ? new Date(
+                            job.registeredOn.seconds * 1000
+                          ).toDateString()
+                        : (job.accountCreated &&
+                          typeof job.accountCreated !== "string"
+                            ? new Date(
+                                job.accountCreated.seconds * 1000
+                              ).toDateString()
+                            : typeof job.accountCreated === "string" &&
+                              job.accountCreated) ||
+                          job.fulldate ||
+                          "-"}
+                    </StyledTableCell>
+                    <StyledTableCell sx={{ width: '100%' }}>
+                      <Button
+                         type="button"
+                          variant="contained"
+                          style={{
+                            background: "#20dbe4",
+                            color: "white",
+                            minWidth: "70%",
+                            fontSize: "15px",
+                          }}
+                      >
+                        View
+                      </Button>
+                    </StyledTableCell>
+                  </TableRow>
+                ))}
+
+                {/*emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={6} />
               </TableRow>
             )*/}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                colSpan={3}
-                count={jobList.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  inputProps: {
-                    "aria-label": "rows per page",
-                  },
-                  native: true,
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-               ActionsComponent={TablePaginationActions}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </TableContainer>
-     
-          </>
-          :
-          <center>
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TablePagination
+                    rowsPerPageOptions={[
+                      5,
+                      10,
+                      25,
+                      { label: "All", value: -1 },
+                    ]}
+                    colSpan={3}
+                    count={jobList.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    SelectProps={{
+                      inputProps: {
+                        "aria-label": "rows per page",
+                      },
+                      native: true,
+                    }}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                  />
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
+        </>
+      ) : (
+        <center>
           <Box sx={{ width: 300 }}>
-          <Skeleton />
-          <Skeleton animation="wave" />
-          <Skeleton animation={false} />
-        </Box>
+            <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
         </center>
-        }
-
+      )}
     </>
   );
 }
