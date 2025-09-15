@@ -17,6 +17,7 @@ import DocsPage from './pages/DocsPage';
 //import CoolersPage from './pages/CoolersPage';
 //import JoinCoolerPage from './pages/JoinCoolerPage';
 import InboxPage from './pages/InboxPage';
+import InboxApp from './pages/InboxApp';
 import UserListPage from './pages/UserListPage';
 import IncubatorVideoPage from './pages/IncubatorVideosPage';
 import OperationsVideoPage from './pages/OperationsVideosPage';
@@ -110,6 +111,7 @@ export default function Router() {
 
         
         { path: 'chat', element: <InboxPage /> },
+        { path: 'inbox', element: <InboxApp /> },
         { path: 'add-course', element: <AddCourse /> },
         { path: 'add-blog', element: <AddBlog /> },
         { path: 'add-subject', element: <AddSubject /> },

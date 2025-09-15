@@ -1,7 +1,7 @@
 import SvgColor from '../../../components/svg-color';
 import { FaUser } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
+import { MdInbox } from "react-icons/md";
 import { FaCreditCard } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 
@@ -17,6 +17,11 @@ const navConfig = [
     title: 'Users',
     path: '/dashboard/users',
     icon: <FaUser style={{ fontSize: '14px' }} />
+  },
+  {
+    title: 'Inbox',
+    path: '/dashboard/inbox',
+    icon: <MdInbox style={{ fontSize: '14px' }} />
   },
   // {
   //   title: 'Cards',
