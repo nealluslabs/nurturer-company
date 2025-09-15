@@ -3,9 +3,11 @@ import './loginUpdated.css'
 import bxNetworkChartSvg from './african-14.jpg'
 import accentLogo from './accentLogo.png'
 import barcode from './barcode2.png'
+import Image from "src/assets/Group-2.png";
 
 import LoginForm from './login-form';
 import { Link } from 'react-router-dom'
+import { Grid } from '@mui/material'
 /*overlapGroup1: "rectangle-1-1.png",
 iconLock: "bx-lock-open-alt-svg-1.png",
 iconUser: "bx-user-svg-1.png",*/
@@ -49,18 +51,26 @@ const loginPageData = {
 
  const  LoginUpdatedPage = () => {
   
-
+ 
 
   return (
     <div className="overall-backround" >
     <div className="container-center-horizontal"  >
     <div className="login-page screen">
-    <img src={accentLogo} className = "login-accent-logo"  alt=""/>
+    {/* <img src={accentLogo} className = "login-accent-logo"  alt=""/> */}
     
       
       <div className="login-content" >
-     
-      <h2 style={{position:"absolute" ,top:"35%"}}>Admin Login</h2>
+          <div className="flex w-full items-center justify-center gap-1 ml-4 mt-52">
+            <img
+              src={Image}
+              alt="Bridgetech Logo"
+              style={{ maxWidth: "50px", marginTop: "8px" }}
+            />
+            <p>|</p>
+            <h2 className="text-2xl ml-2 text-center font-extrabold">ADMIN LOGIN</h2>
+          </div>
+
        <LoginForm />
        
 
@@ -68,31 +78,31 @@ const loginPageData = {
       </div>
      
     </div>
+ 
 
 
 
 
-
-    <div className="overlap-group1" style={{ backgroundImage: `url(${bxNetworkChartSvg})` }}>
+    <div className="overlap-group1">
       
-      <div className='intro-box'>
+      {/* <div className='intro-box'> */}
         
         <div className ="welcome-barcode">
-      <img src={barcode} alt="White Barcode"/>
 
-        <h1> Welcome to Nurturer Company</h1>
+        <h1> WELCOME TO NURTURER COMPANY</h1>
         </div>
 
-      {/*<div className = "intro-desc">
-         <h1>We’re on a mission to help MBE & WBE Contractors grow</h1>
+      <div className = "intro-desc">
+         <h1>The AI powered assistant that keeps you in the conversation</h1>
          <ul>
-          <li>Connect with other contractors, resources and more in our community.</li>
-          <li>Apply to our foundation program & project matching</li>
+          <li>Stay Top-Of-Mind</li>
+          <li>Save Time, Close More</li>
+          <li>Never Miss a Lead</li>
          
          </ul>
-       </div>*/}
+       </div> 
 
-      </div>
+      {/* </div> */}
    </div>
 </div>
 </div>
