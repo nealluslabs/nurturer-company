@@ -36,6 +36,15 @@ const DashboardHome = () => {
     }
   }, [user, dispatch]);
 
+
+  useEffect(() => {
+
+    console.log("DAHSBOARD PAGE ,user is --->",user)
+    if (!user) {
+     navigate('/loginTest')
+    }
+  }, [user]);
+
   // Process touchpoint data
   let touchpointData = [];
   if (allContacts.length > 0) {
