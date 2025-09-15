@@ -23,7 +23,7 @@ const DashboardHome = () => {
   const navigate = useNavigate();
   
   // Mock selectors - you'll need to replace these with your actual Redux selectors
-  const { isAuth, user } = useSelector((state) => state.auth || { isAuth: true/*, user: { uid: 'test' }*/ });
+  const { isAuth, user,company } = useSelector((state) => state.auth || { isAuth: true/*, user: { uid: 'test' }*/ });
   const { allUsers, isLoading } = useSelector((state) => state.user || { allUsers: [], isLoading: false });
   const { allContacts = [], filteredContacts = [] } = useSelector((state) => state.user || {});
   
@@ -39,44 +39,48 @@ const DashboardHome = () => {
 
   useEffect(() => {
 
-    console.log("DAHSBOARD PAGE ,user is --->",user)
+    console.log("DAHSBOARD PAGE ,company is --->",company)
     if (!user) {
      navigate('/loginTest')
     }
   }, [user]);
 
-  // Process touchpoint data
+ // // Process touchpoint data
   let touchpointData = [];
-  if (allContacts.length > 0) {
+ 
+  if (company && company.tickets &&  company.tickets.length) {
     let allMessages = [];
-    allContacts.forEach(contact => {
-      if (Array.isArray(contact.messageQueue)) {
-        allMessages = allMessages.concat(
-          contact.messageQueue.map(msg => ({
-            ...msg,
-            contactName: contact.name,
-            contactId: contact.id || contact.uid,
-            uid: contact.uid
-          }))
-        );
-      }
+   company.tickets.forEach(message => {
+       allMessages.push(message)
+      //  allMessages = allMessages.concat(
+      //    contact.messageQueue.map(msg => ({
+      //      ...msg,
+      //      contactName: contact.name,
+      //      contactId: contact.id || contact.uid,
+      //      uid: contact.uid
+      //    }))
+      //  );
+
+
+    
     });
     allMessages.sort((a, b) => {
-      if (a.createdAt && b.createdAt) {
-        return b.createdAt - a.createdAt;
+      if (a.sentOn && b.sentOn) {
+        return b.sentOn - a.sentOn;
       }
       return 0;
     });
-    touchpointData = allMessages.slice(0, 5).map((msg, idx) => ({
+
+    touchpointData = allMessages && allMessages.slice(0,5).map((msg, idx) => ({
       id: msg.id || idx,
-      title: msg.title || msg.subject || 'No Title',
-      subtitle: msg.contactName ? `${msg.contactName}${msg.to ? ' - ' + msg.to : ''}` : (msg.to || ''),
+      title: msg.messageTitle || msg.subject || 'No Title',
+      subtitle: msg.messageSender ? `${msg.messageSender + ' - ' + msg.messageSenderEmail }` : (msg.messageSenderEmail || ''),
       status: (msg.status && msg.status.toLowerCase() === 'pending') ? 'Pending' : (msg.messageStatus || ''),
       statusColor: 'grey',
       statusBackground: 'yellow',
       icon: Mail,
       iconColor: '#1976d2',
-      uid: msg.uid
+      uid: msg.id
     }));
   }
 
