@@ -58,11 +58,11 @@ export default function Nav({ openNav, onCloseNav }) {
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
       }}
     >
-      <Box sx={{ px: 2.5, pt: 3, pb: 0, display: 'flex', justifyContent: 'center' }}>
-        <img src={Image} alt="Bridgetech Logo" style={{ maxWidth: '110px', marginTop: '8px' }} />
+      <Box sx={{ px: 2.5, pt: 2, pb: 0, display: 'flex', justifyContent: 'center' }}>
+        <img src={Image} alt="Bridgetech Logo" style={{ maxWidth: '90px', marginTop: '4px' }} />
       </Box>
 
-      <Box sx={{ mb: 5, mt: -3, mx: 2.5,display:'flex',justifyContent:"center" }}>
+      <Box sx={{ mb: 3, mt: -2, mx: 2.5,display:'flex',justifyContent:"center" }}>
         <Link underline="none">
           {/* <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
@@ -85,8 +85,8 @@ export default function Nav({ openNav, onCloseNav }) {
         data={navConfig}
         sx={{
           '& .MuiListItem-root': {
-            fontSize: '0.5rem',
-            padding: '7px 14px',
+            fontSize: '0.4rem',
+            padding: '4px 12px',
             marginBottom: 0,
             borderBottom: 'none',
             transition: 'background 0.2s, color 0.2s',

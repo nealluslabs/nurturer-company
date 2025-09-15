@@ -56,10 +56,10 @@ function NavItem({ item }) {
       component={RouterLink}
       to={path}
       sx={{
-        fontSize: '15px',
+        fontSize: '13px',
         width: '100%',
         '& .MuiListItemIcon-root, & .MuiSvgIcon-root': {
-          fontSize: '15px',
+          fontSize: '13px',
         },
         '&:hover': {
           backgroundColor: 'rgba(255,255,255,0.5)',
@@ -75,22 +75,22 @@ function NavItem({ item }) {
       }}
     >
       {iconLabel != 'msg' && iconLabel != 'settings' && (
-        <StyledNavItemIcon sx={{ color: 'white', fontSize: '14px', '&.active': { color: 'black', backgroundColor: 'white', fontWeight: 'fontWeightBold' } }}>
+        <StyledNavItemIcon sx={{ color: 'white', fontSize: '12px', '&.active': { color: 'black', backgroundColor: 'white', fontWeight: 'fontWeightBold' } }}>
           {icon && icon}
         </StyledNavItemIcon>
       )}
-      {iconLabel === 'msg' && <StyledNavItemIcon sx={{ color: 'black', fontSize: '14px' }}><MessageIcon /></StyledNavItemIcon>}
-      {iconLabel === 'settings' && <StyledNavItemIcon sx={{ color: 'black', fontSize: '14px' }}><SettingsIcon /></StyledNavItemIcon>}
+      {iconLabel === 'msg' && <StyledNavItemIcon sx={{ color: 'black', fontSize: '12px' }}><MessageIcon /></StyledNavItemIcon>}
+      {iconLabel === 'settings' && <StyledNavItemIcon sx={{ color: 'black', fontSize: '12px' }}><SettingsIcon /></StyledNavItemIcon>}
 
       <ListItemText
         disableTypography
         primary={title}
         sx={{
           color: '#FFFFFF',
-          fontSize: '15px',
+          fontSize: '13px',
           fontWeight: 600,
-          paddingY: path == location.pathname && '2px',
-          paddingX: item.title == 'MEDIA' && '8px',
+          paddingY: path == location.pathname && '1px',
+          paddingX: item.title == 'MEDIA' && '6px',
         }}
       />
       {/* Removed version text from button */}
