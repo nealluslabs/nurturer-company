@@ -9,11 +9,11 @@ display: contents;
 text-decoration: none;
 } */
 
-.overall-backround{
+/* .overall-backround{
  
  
 /*background: linear-gradient(white, black);*/
-}
+/* }  */
 
 /*ALL THE FONT, (ON EVERY PAGE) IS CHANGED FROM HERE*/
 /* * {
@@ -22,12 +22,12 @@ text-decoration: none;
   
     } */
 
-    body {
+    /* body {
         /*background-color: black !important;*/
        /* background: linear-gradient(rgb(255, 255, 255,0), black);*/
-       background-color: white !important;
+       /* background-color: white !important; */
         
-    }
+    /* } */
 
 .container-center-horizontal {
 display: flex;

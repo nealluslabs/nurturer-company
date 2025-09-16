@@ -54,7 +54,7 @@ const loginPageData = {
  
 
   return (
-    <div className="overall-backround" >
+    <div className="overall-backround bg-[#FFF6BD]" >
     <div className="container-center-horizontal"  >
     <div className="login-page screen">
     {/* <img src={accentLogo} className = "login-accent-logo"  alt=""/> */}
@@ -68,7 +68,7 @@ const loginPageData = {
               style={{ maxWidth: "50px", marginTop: "8px" }}
             />
             <p>|</p>
-            <h2 className="text-2xl ml-2 text-center font-extrabold">ADMIN LOGIN</h2>
+            <h2 className="text-2xl ml-2 text-center font-extrabold">COMPANY LOGIN</h2>
           </div>
 
        <LoginForm />
@@ -83,7 +83,7 @@ const loginPageData = {
 
 
 
-    <div className="overlap-group1">
+    <div className="overlap-group1 bg-[#20dbe4]">
       
       {/* <div className='intro-box'> */}
         
