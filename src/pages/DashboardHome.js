@@ -18,6 +18,7 @@ import SendIcon from '@mui/icons-material/Send';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { Mail } from '@mui/icons-material';
 import { getJobs } from '../redux/actions/job.action';
+import { Box } from '@mui/material';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
@@ -243,9 +244,13 @@ const DashboardHome = () => {
   return (
     <div style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
       {/* Stats Cards */}
-      <div style={{
+      <Box sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
+        gridTemplateColumns: {
+          xs: "repeat(2, 1fr)",        // mobile (extra-small)
+          sm: "repeat(4, 1fr)", // small screens
+          md: "repeat(4, 1fr)"  // medium+
+        },
         gap: "16px"
       }}>
         {statsData.map((item) => {
@@ -290,12 +295,19 @@ const DashboardHome = () => {
             </div>
           );
         })}
-      </div>
+      </Box>
+
+
+      <div>
 
       {/* Charts Section */}
-      <div style={{
+      <Box sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: {
+          xs: "1fr",        // mobile (extra-small)
+          sm: "repeat(2, 1fr)", // small screens
+          md: "repeat(2, 1fr)"  // medium+
+        },
         gap: "20px",
         margin: "26px 2px 20px 2px"
       }}>
@@ -343,12 +355,16 @@ const DashboardHome = () => {
             height={300}
           />
         </div>
-      </div>
+      </Box>
 
       {/* Main Content Grid */}
-      <div style={{
+      <Box sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: {
+          xs: "1fr",        // mobile (extra-small)
+          sm: "repeat(2, 1fr)", // small screens
+          md: "repeat(2, 1fr)"  // medium+
+        },
         gap: "16px",
         margin: "26px 2px"
       }}>
@@ -517,6 +533,8 @@ const DashboardHome = () => {
             )}
           </div>
         </div>
+      </Box>
+
       </div>
     </div>
   );

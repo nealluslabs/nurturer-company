@@ -254,10 +254,10 @@ export default function CJobList({ jobs }) {
                   <StyledTableCell align="left" >
                     Name
                   </StyledTableCell>
-                  <StyledTableCell align="left" >
+                  <StyledTableCell align="left" sx={{display:{xs:"none",sm:"block" },width:"100%"}} >
                     Email
                   </StyledTableCell>
-                  <StyledTableCell align="left">
+                  <StyledTableCell  align="left">
                     Date
                   </StyledTableCell>
                   <StyledTableCell align="left">
@@ -288,10 +288,10 @@ export default function CJobList({ jobs }) {
                         job.email ||
                         "-"}
                     </StyledTableCell>
-                    <StyledTableCell >
+                    <StyledTableCell sx={{display:{xs:"none",sm:"block",width:"100%" }}} >
                       {job.email || "-"}
                     </StyledTableCell>
-                    <StyledTableCell >
+                    <StyledTableCell  >
                       {job.registeredOn && typeof job.registeredOn !== "string"
                         ? new Date(
                             job.registeredOn.seconds * 1000
