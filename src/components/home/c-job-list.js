@@ -139,11 +139,14 @@ export default function CJobList({ jobs }) {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
 
+  // Get users from Redux and current user for companyID filtering
+  const { allUsers, isLoading } = useSelector((state) => state.user || { allUsers: [], isLoading: false });
+  const { user } = useSelector((state) => state.auth || {});
+
   useEffect(() => {
-    // Fetch users from firebase using redux action (pattern used in codebase)
+    console.log("Current user from Redux:", user);
     const fetchData = async () => {
       try {
-        // You may need to pass the current user's uid if required by fetchAllUsers
         const res = await dispatch(fetchAllUsers());
         if (res && res.payload) {
           setUsers(res.payload);
@@ -168,7 +171,6 @@ export default function CJobList({ jobs }) {
     setSearched("");
     requestSearch(searched);
   };
-  //search function end
 
   const navigate = useNavigate();
   const [page, setPage] = React.useState(0);
@@ -364,6 +366,6 @@ export default function CJobList({ jobs }) {
           </Box>
         </center>
       )}
-    </>
+  </>
   );
 }

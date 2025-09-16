@@ -17,16 +17,20 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import SendIcon from '@mui/icons-material/Send';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { Mail } from '@mui/icons-material';
+import { getJobs } from '../redux/actions/job.action';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  // Mock selectors - you'll need to replace these with your actual Redux selectors
-  const { isAuth, user,company } = useSelector((state) => state.auth || { isAuth: true/*, user: { uid: 'test' }*/ });
+  // Mock selectors - you'll need to replace
+  const state = useSelector((state) => state);
+  const { isAuth, user, company } = state.auth || { isAuth: true/*, user: { uid: 'test' }*/ };
   const { allUsers, isLoading } = useSelector((state) => state.user || { allUsers: [], isLoading: false });
   const { allContacts = [], filteredContacts = [] } = useSelector((state) => state.user || {});
+  const { jobs } = useSelector((state) => state.jobs);
   
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const [tabValue, setTabValue] = useState(0);
 
   useEffect(() => {
@@ -36,10 +40,21 @@ const DashboardHome = () => {
     }
   }, [user, dispatch]);
 
+  useEffect(() => {
+    dispatch(getJobs());
+  }, [dispatch]);
 
   useEffect(() => {
+    if (user && user.companyID && jobs && jobs.length > 0) {
+      const companyJobs = jobs.filter(job => job.companyID === user.companyID);
+      setFilteredJobs(companyJobs);
+    } else if (jobs && jobs.length > 0) {
+      setFilteredJobs(jobs);
+    }
+  }, [jobs, user?.companyID]);
 
-    console.log("DAHSBOARD PAGE ,company is --->",company)
+
+  useEffect(() => {
     if (!user) {
      navigate('/loginTest')
     }
@@ -174,7 +189,7 @@ const DashboardHome = () => {
     {
       id: 1,
       icon: GroupsIcon,
-      count: allContacts ? allContacts.length : 0,
+      count: filteredJobs ? filteredJobs.length : 0,
       label: 'Total Users',
       color: '#03befc',
     },
@@ -188,7 +203,7 @@ const DashboardHome = () => {
     {
       id: 3,
       icon: CalendarMonthIcon,
-      count: 5,
+      count: filteredJobs ? filteredJobs.length : 0,
       label: 'Users Online',
       color: '#03bafc',
     },
@@ -217,6 +232,10 @@ const DashboardHome = () => {
       navigate('/candidates');
     }, 300);
   };
+
+  console.log("Touchpoint Data:", touchpointData);
+  console.log("Recent Contacts:", recentContacts);
+  console.log("Filtered Jobs:", filteredJobs);
 
   // Removed authentication check to allow free access
   // if (!isAuth) return <Navigate to="/loginTest" replace />;
@@ -425,19 +444,18 @@ const DashboardHome = () => {
           </div>
 
           <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
-            {recentContacts.length === 0 ? (
-              <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No contacts found.</div>
+            {filteredJobs.length === 0 ? (
+              <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No Recent Active Users</div>
             ) : (
-              recentContacts.map((user, idx) => {
+              filteredJobs.slice(0, 5).map((user, idx) => {
                 const initials = user.initials || (user.name ? user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : '?');
-                const name = user.name || 'Unknown';
-                const role = user.role || user.companyName || '';
-                const date = user.createdAt ? new Date(user.createdAt).toLocaleDateString() : '';
+                const name = user.name || user.companyName || 'Unknown';
+                const lastActive = user.lastActive ? new Date(user.lastActive).toLocaleDateString() : 'Never';
                 const photoUrl = user.photoUrl;
-                
+
                 return (
                   <div
-                    key={user.id || idx}
+                    key={user.id || user.uid || idx}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -491,7 +509,7 @@ const DashboardHome = () => {
                         borderRadius: "4px"
                       }}
                     >
-                      {date}
+                      {lastActive}
                     </p>
                   </div>
                 );

@@ -88,7 +88,7 @@ function TablePaginationActions(props) {
 // Styled table cell (copied from c-job-list)
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000000',
     color: theme?.palette?.common?.white || '#ffffff',
     width: '25%',
     textAlign: 'center',
@@ -104,22 +104,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function CJobs() {
   const dispatch = useDispatch();
   const { jobs } = useSelector((state) => state.jobs);
-  const [jobArr, setJobArr] = useState(jobs);
+  const { user } = useSelector((state) => state.auth || {});
+  const [jobArr, setJobArr] = useState([]);
   const [testData, setTestData] = useState();
-  const navigate = useNavigate()
-
-  //const { userDetails, error,message, isLoading } = useSelector((state) => state.loggedIn);
-    
-   /* useEffect(() => {
-      console.log(userDetails)
-     if(userDetails === '' ){
-       
-        navigate('/login')
-        
-      }
-       
-       
-    }, [])*/
+  const navigate = useNavigate();
 
     const [state, setState] = useState({
       series: [{
@@ -133,7 +121,6 @@ export default function CJobs() {
             show: false
           },
           background: 'transparent',
-          // background: '#fff',
         },
         plotOptions: {
           bar: {
@@ -157,26 +144,24 @@ export default function CJobs() {
       }
     });
 
-    // Function to get last 7 months dynamically
   const getLastSevenMonths = () => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const date = new Date();
-    let currentMonthIndex = date.getMonth(); // Subtract 1 month
+    let currentMonthIndex = date.getMonth();
 
     if (currentMonthIndex < 0) {
-      currentMonthIndex = 11; // Handle case when index goes negative (December of the previous year)
+      currentMonthIndex = 11;
     }
 
     let lastSevenMonths = [];
     for (let i = 0; i < 7; i++) {
       lastSevenMonths.unshift(months[currentMonthIndex]);
-      currentMonthIndex = (currentMonthIndex - 1 + 12) % 12; // Move backwards and loop around
+      currentMonthIndex = (currentMonthIndex - 1 + 12) % 12;
     }
 
     return lastSevenMonths;
   };
 
-  // Update state with dynamic categories on component mount
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
@@ -195,27 +180,8 @@ export default function CJobs() {
  useEffect(() => {
   dispatch(getOrders());  
    dispatch(getJobs());  
-   setTimeout(setJobArr(jobs), 1000);
   }, [])
 
-  useEffect( () => {
-    const fetchData = async () => {
-      try {
-          const snapshot = await db.collection("users").get();
-          const items = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-          console.log("this would display all the users available on the system!");
-          console.log(items);
-          setTestData(items);
-        } catch (error) {
-          console.error("Error fetching data: ", error);
-        }
-      };
-
-    fetchData();
-  }, [] )
 
   useEffect(() => {
     if(jobArr.length === 0 ){
@@ -223,27 +189,28 @@ export default function CJobs() {
        }  
      }, [jobs])
 
-  console.log('cmc user data is: ', jobArr);
+  useEffect(() => {
+    if (user && user.companyID && jobs && jobs.length > 0) {
+      const filteredJobs = jobs.filter(job => job.companyID === user.companyID);
+      setJobArr(filteredJobs);
+    } else if (jobs && jobs.length > 0) {
+      setJobArr(jobs);
+    }
+  }, [jobs, user?.companyID]);
 
   return (
-      
-        
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-       {/* <h1 style={{position:"relative",fontWeight:"bold",left:"0px",marginBottom:"40px",fontSize:"30px"}}>DASHBOARD</h1> */}
-      
-       {/* All Users Table */}
-       {jobArr.length ?
-         <CJobList jobs={jobs} />
-         :
-         <center>
-           <Box sx={{ width: 300 }}>
-             <Skeleton />
-             <Skeleton animation="wave" />
-             <Skeleton animation={false} />
-           </Box>
-         </center>
-       }
-        </Container>
-     
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      {jobArr.length ?
+        <CJobList jobs={jobArr} />
+        :
+        <center>
+          <Box sx={{ width: 300 }}>
+            <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
+        </center>
+      }
+    </Container>
   );
 }

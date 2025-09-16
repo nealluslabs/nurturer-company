@@ -111,13 +111,10 @@ export default function CreateUsersPage() {
               </div>
             )}
 
-            <h2>Add New User</h2>
-            <br />
-
             <Grid
               container
               spacing={4}
-              style={{ position: "relative", marginTop: "2rem" }}
+              style={{ position: "relative", marginTop: ".5rem" }}
             >
               <Grid item xs={12} sm={6} style={{ marginTop: "1rem" }}>
                 <TextField
