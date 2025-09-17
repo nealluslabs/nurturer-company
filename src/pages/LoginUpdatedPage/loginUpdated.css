@@ -277,7 +277,7 @@ justify-content: center;
 align-items: center;
 /* flex:1;
 position: relative; */
-/* background-color:'#20dbe4'; background: wheat;*/
+ background-color:'#20dbe4';/* background: wheat;*/
  color: #FFFFFF;
 padding: 5rem;
 }
