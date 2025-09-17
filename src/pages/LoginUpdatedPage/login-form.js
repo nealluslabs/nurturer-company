@@ -161,7 +161,7 @@ function LoginForm(props) {
         />
           <br/>
         <Button
-          style={{ borderRadius: '0.5rem',padding:"0.9rem",backgroundColor:"black",color:"white"}}
+          style={{ borderRadius: '0.5rem',padding:"0.9rem",backgroundColor:"#20dbe4",color:"white"}}
           onClick={submitLogin}
           type="button"
           variant="contained"
