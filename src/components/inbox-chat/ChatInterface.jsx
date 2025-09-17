@@ -24,7 +24,7 @@ const ChatInterface = () => {
   const mockChats = [
     {
       id: 1,
-      name: 'John Doe',
+      name: 'Nurturer Support',
       avatar: 'https://i.pravatar.cc/150?img=1',
       lastMessage: 'Hey, how are you doing?',
       timestamp: '2:30 PM',
@@ -32,7 +32,7 @@ const ChatInterface = () => {
     },
     {
       id: 2,
-      name: 'Jane Smith',
+      name: 'Nurturer Support',
       avatar: 'https://i.pravatar.cc/150?img=2',
       lastMessage: 'Thanks for the update!',
       timestamp: '1:45 PM',
@@ -40,7 +40,7 @@ const ChatInterface = () => {
     },
     {
       id: 3,
-      name: 'Mike Johnson',
+      name: 'Nurturer Support',
       avatar: 'https://i.pravatar.cc/150?img=3',
       lastMessage: 'Let me know when you\'re free',
       timestamp: '12:20 PM',
@@ -49,8 +49,7 @@ const ChatInterface = () => {
   ];
 
   const mockMessages = [
-    { id: 1, text: 'Hello! How are you doing today?', sender: 'them', time: '2:30 PM' },
-    { id: 2, text: 'I\'m doing great, thanks for asking! How about you?', sender: 'me', time: '2:31 PM' }
+    { id: 1, text: 'Thank you for your payment. Your subscription has been renewed.', sender: 'them', time: '2:30 PM' }
   ];
 
   return (
@@ -139,17 +138,6 @@ const ChatInterface = () => {
                 <ListItemAvatar>
                   <Box sx={{ position: 'relative' }}>
                     <Avatar src={Image} sx={{ width: { xs: 40, sm: 48 }, height: { xs: 40, sm: 48 } }} />
-                    <CheckCircleOutline
-                      sx={{
-                        position: 'absolute',
-                        bottom: -4,
-                        right: -4,
-                        backgroundColor: 'white',
-                        borderRadius: '50%',
-                        color: 'green',
-                        fontSize: { xs: 14, sm: 16 }
-                      }}
-                    />
                   </Box>
                 </ListItemAvatar>
                 <ListItemText
@@ -198,7 +186,7 @@ const ChatInterface = () => {
         <Box
           sx={{
             p: { xs: 1.5, sm: 2 },
-            backgroundColor: '#0d9ba1',
+            backgroundColor: '#34495e',
             color: 'white',
             display: 'flex',
             alignItems: 'center',
@@ -219,17 +207,6 @@ const ChatInterface = () => {
               </IconButton>
               <Box sx={{ position: 'relative' }}>
                 <Avatar src={Image} sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }} />
-                <CheckCircleOutline
-                  sx={{
-                    position: 'absolute',
-                    bottom: { xs: -2, sm: -3 },
-                    right: { xs: -2, sm: -3 },
-                    backgroundColor: 'white',
-                    borderRadius: '50%',
-                    color: 'green',
-                    fontSize: { xs: 12, sm: 14 }
-                  }}
-                />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                 {selectedChat.name}
@@ -246,7 +223,7 @@ const ChatInterface = () => {
           sx={{
             flex: 1,
             p: { xs: 1.5, sm: 2 },
-            backgroundColor: '#f8f9fa',
+            backgroundColor: '#b3b3b3',
             overflow: 'auto',
             display: 'flex',
             flexDirection: 'column',
@@ -265,15 +242,19 @@ const ChatInterface = () => {
               >
                 <Paper
                   sx={{
-                    p: 1.5,
-                    width: '350px',
-                    backgroundColor: msg.sender === 'me' ? '#0d9ba1' : '#ffffff',
-                    color: msg.sender === 'me' ? 'white' : 'inherit',
+                    p: 3,
+                    width: '80%',
+                    minHeight: '80px',
+                    backgroundColor: msg.sender === 'me' ? '#ffffff' : '#ffffff',
+                    color: 'black',
                     borderRadius: '16px',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
-                  <Typography variant="body1" sx={{ textAlign: 'center' }}>
+                  <Typography variant="body1" sx={{ textAlign: 'left', fontSize: '1.1rem' }}>
                     {msg.text}
                   </Typography>
                 </Paper>
