@@ -83,7 +83,7 @@ const loginPageData = {
 
 
 
-    <div className="overlap-group1 bg-[#20dbe4]">
+    <div className="overlap-group1 ">
       
       {/* <div className='intro-box'> */}
         

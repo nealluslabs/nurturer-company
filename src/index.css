@@ -52,6 +52,14 @@
 
 /* Start of Subscription Page Styling */
 
+
+  .myChartWrapper .apexcharts-legend {
+    z-index: 1000 !important;
+    position: relative;
+    
+  }
+
+
 .subscription_title {
   font-size: 21px;
   font-weight: 600;
@@ -130,6 +138,15 @@
   }
   .plan_split_column {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .myChartWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

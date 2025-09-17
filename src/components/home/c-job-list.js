@@ -254,7 +254,9 @@ export default function CJobList({ jobs }) {
                   <StyledTableCell align="left" >
                     Name
                   </StyledTableCell>
-                  <StyledTableCell align="left" sx={{display:{xs:"none",sm:"block" },width:"100%"}} >
+                  <StyledTableCell align="left"   sx={{
+    display: { xs: "none", sm: "table-cell" }
+  }} >
                     Email
                   </StyledTableCell>
                   <StyledTableCell  align="left">
@@ -288,7 +290,9 @@ export default function CJobList({ jobs }) {
                         job.email ||
                         "-"}
                     </StyledTableCell>
-                    <StyledTableCell sx={{display:{xs:"none",sm:"block",width:"100%" }}} >
+                    <StyledTableCell   sx={{
+    display: { xs: "none", sm: "table-cell" }
+  }} >
                       {job.email || "-"}
                     </StyledTableCell>
                     <StyledTableCell  >

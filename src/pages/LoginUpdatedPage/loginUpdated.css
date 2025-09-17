@@ -39,7 +39,7 @@ pointer-events: auto;
 
 /* background:#020412; */
 background-color:#FFFFFF;
-height: 35rem;
+height: /*35rem*/97.5%;
 width: 100%;
 display: flex;
 align-items: center;
@@ -269,7 +269,7 @@ font-weight: 700;
 background-size: cover; */
 border-top-right-radius:2rem;
 border-bottom-right-radius:2rem ;
-height: 91%;
+height: 97.5%;
 width: 60%;
 display: flex;
 flex-direction: column;
@@ -277,7 +277,7 @@ justify-content: center;
 align-items: center;
 /* flex:1;
 position: relative; */
-/* background-color:'#20dbe4'; background: wheat; */
+/* background-color:'#20dbe4'; background: wheat;*/
  color: #FFFFFF;
 padding: 5rem;
 }

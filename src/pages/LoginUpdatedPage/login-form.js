@@ -55,7 +55,7 @@ function LoginForm(props) {
 
    const { isLoading, error,user,message } = useSelector( (state) => state.auth);
    
-   console.log("this is error",error)
+   console.log("this is error",error )
 
 
   function onSubmit(model) {
@@ -95,8 +95,9 @@ function LoginForm(props) {
             <b>X</b>
           </Button>
         }
-      >
-        <p style={{ fontSize: '14px' }}><b>{error}</b></p>
+      > 
+         {/*DO NOT DELETE THIS CHECK, IT ACCOUNTS FOR ALL FORMS OF ERROR MESSAGE*/}
+        <p style={{ fontSize: '14px' }}><b>{error&& error !== null && error.includes('message') ? typeof(JSON.parse(error)) === "object"  && "Invalid Login Credentials,Please try again":error}</b></p>
       </Alert><br/></div>}
 
       

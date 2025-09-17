@@ -20,8 +20,8 @@ import {AiOutlineLock} from 'react-icons/ai'
 
 // ----------------------------------------------------------------------
 
-// const NAV_WIDTH = 280;
-const NAV_WIDTH = '20%';
+ const NAV_WIDTH = 280;
+//const NAV_WIDTH = '20%';
 
 
 const StyledAccount = styled('div')(({ theme }) => ({
@@ -131,7 +131,7 @@ export default function Nav({ openNav, onCloseNav }) {
               width: NAV_WIDTH,
               // bgcolor: 'background.default',
               // bgcolor: '#60A1EC',
-              bgcolor: '#20dbe4',
+              backgroundColor: '#20dbe4 !important',
               borderRightStyle: 'dashed',
             },
           }}
@@ -149,7 +149,7 @@ export default function Nav({ openNav, onCloseNav }) {
             keepMounted: true,
           }}
           PaperProps={{
-            sx: { width: NAV_WIDTH },
+            sx: { width: NAV_WIDTH, backgroundColor: '#20dbe4 !important', },
           }}
         >
           {renderContent}

@@ -90,6 +90,12 @@ const palette = {
     default: GREY[100],
     neutral: GREY[200],
   },
+    themeYellow: {
+      main: "#FFF6BD",
+    },
+    themeBlue: {
+      main: "#20DBE4",
+    },
   action: {
     active: GREY[600],
     hover: alpha(GREY[500], 0.08),

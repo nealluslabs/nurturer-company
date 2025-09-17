@@ -312,27 +312,50 @@ const DashboardHome = () => {
         margin: "26px 2px 20px 2px"
       }}>
         {/* Doughnut Chart */}
-        <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+        <Box sx={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
           <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>Email Distribution</h3>
+         
+          <div className="myChartWrapper">
           <ReactApexChart
             options={{
-              chart: { type: 'donut' },
+              chart: { 
+                type: 'donut',
+                foreColor: '#333', // sets default text color (applies to legend/labels)
+                toolbar: { show: false } // hides the export/download toolbar
+              },
               labels: ['Touches', 'Events', 'Newsletters'],
               colors: ['#00E396', '#FEB019', '#FF4560'],
-              legend: { position: 'bottom' },
-              responsive: [{
-                breakpoint: 480,
-                options: {
-                  chart: { width: 200 },
-                  legend: { position: 'bottom' }
+              legend: {
+                position: 'bottom',
+                horizontalAlign: 'center', // force single row
+                floating: false,           // let ApexCharts reserve space
+                offsetY: 6,
+                itemMargin: {
+                  horizontal: 10, // spacing between items
+                  vertical: 0
                 }
-              }]
+              },
+              responsive: [
+                {
+                  breakpoint: 600,
+                  options: {
+                    chart: { width: 300 },
+                    legend: {
+                      position: 'bottom',
+                      horizontalAlign: 'center',
+                      floating: false,           // let ApexCharts reserve space
+                      offsetY: 6,
+                    }
+                  }
+                }
+              ]
             }}
             series={[44, 25, 31]}
             type="donut"
             height={300}
           />
-        </div>
+          </div>
+        </Box>
 
         {/* Histogram */}
         <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
@@ -459,7 +482,7 @@ const DashboardHome = () => {
             </button>
           </div>
 
-          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+          <div style={{height:'22.3rem', background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
             {filteredJobs.length === 0 ? (
               <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No Recent Active Users</div>
             ) : (
