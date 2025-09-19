@@ -131,7 +131,7 @@ export const uploadImage = (user, file, navigate, setLoading) => async (dispatch
 
 
 export const fetchUserData = (id, type, navigate) => async (dispatch) => {
-  var user = db.collection("users").doc(id);
+  var user = db.collection("companies").doc(id);
   user.get().then((doc) => {
   if (doc.exists) {
     // console.log("User Data:", doc.data());
