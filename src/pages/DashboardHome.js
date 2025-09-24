@@ -198,7 +198,7 @@ const DashboardHome = () => {
       id: 2,
       icon: WatchLaterIcon,
       count: touchpointData ? touchpointData.length : 0,
-      label: 'Tickets',
+      label: 'Messages',
       color: '#ca03fc',
     },
     {
