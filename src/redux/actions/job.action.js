@@ -36,7 +36,7 @@ export const getOrders = () => async (dispatch) => {
 export const getJobs = (uid) => async (dispatch) => {
     db.collection('users').get().then((snapshot) => {
         const jobs = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() }));
-        // console.log('Jobs: ', jobs);
+         console.log('Jobs WHICH ARE SUPPOSED TO BE COMPANIES-->: ', jobs);
         dispatch(fetchJobs(jobs));
 }).catch((error) => {
         var errorMessage = error.message;

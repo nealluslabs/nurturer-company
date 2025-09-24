@@ -184,9 +184,9 @@ export default function CJobs() {
 
 
   useEffect(() => {
-    if(jobArr.length === 0 ){
+    /*if(jobArr.length === 0 ){*/
       setJobArr(jobs);
-       }  
+      /* }  */
      }, [jobs])
 
   useEffect(() => {
@@ -200,8 +200,8 @@ export default function CJobs() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      {jobArr.length ?
-        <CJobList jobs={jobArr} />
+      {jobs && jobs.length ?
+        <CJobList jobs={jobs} />
         :
         <center>
           <Box sx={{ width: 300 }}>
