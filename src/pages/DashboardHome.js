@@ -396,7 +396,7 @@ const DashboardHome = () => {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: 'flex', alignItems: "center" }}>
               <SendIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
-              <h3>Recent Tickets</h3>
+              <h3>Recent Messages</h3>
             </div>
             <button
               style={{
