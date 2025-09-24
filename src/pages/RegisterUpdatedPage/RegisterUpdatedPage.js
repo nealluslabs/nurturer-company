@@ -64,7 +64,7 @@ const loginPageData = {
        <RegisterForm />
        
 
-    <span style={{position:"absolute", bottom:"2rem"}}>  Have an account? <Link style={{color:"lightblue"}} to ={'/loginTest'}>Login.</Link> </span>
+    <span style={{position:"absolute", bottom:"2rem"}}>  Have an account? <Link style={{color:"lightblue"}} to ={'/login'}>Login.</Link> </span>
       </div>
      
     </div>

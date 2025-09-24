@@ -57,7 +57,7 @@ const DashboardHome = () => {
 
   useEffect(() => {
     if (!user) {
-     navigate('/loginTest')
+     navigate('/login')
     }
   }, [user]);
 
@@ -239,7 +239,7 @@ const DashboardHome = () => {
   console.log("Filtered Jobs:", filteredJobs);
 
   // Removed authentication check to allow free access
-  // if (!isAuth) return <Navigate to="/loginTest" replace />;
+  // if (!isAuth) return <Navigate to="/login" replace />;
 
   return (
     <div style={{ backgroundColor: "#fff", minHeight: "100vh" }}>

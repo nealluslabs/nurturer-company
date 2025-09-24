@@ -135,7 +135,7 @@ export default function Router() {
       ],
     },
     {
-      path: 'loginTest',
+      path: 'login',
       element:/* <Login />*/<LoginUpdatedPage/>,
     },
 

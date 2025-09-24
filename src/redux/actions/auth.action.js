@@ -7,6 +7,7 @@ import { clearGroup } from '../reducers/group.slice';
 
   export const signin = (user, navigate,) => async (dispatch) => {
     dispatch(isItLoading(true))
+   // setTimeout(()=>{dispatch(isItLoading(false))},2000)
     console.log("all is still well at this point-->")
     fb.auth().signInWithEmailAndPassword(user.email, user.password)
     .then((userCredential) => {
@@ -15,12 +16,12 @@ import { clearGroup } from '../reducers/group.slice';
       var user = userCredential.user;
       console.log('Signed In user is: ', user.email);
        dispatch(fetchUserData(user.uid, "sigin", navigate));
-       dispatch(isItLoading(false))
+       setTimeout(()=>{dispatch(isItLoading(false))},2000)
     })
     .catch((error) => {
       console.log( ' PROBLEM REPORT ', error.message);
       dispatch(loginFailed(error.message));
-     
+      dispatch(isItLoading(false))
       var errorCode = error.code;
       var errorMessage = error.message;
       //notifyErrorFxn(errorMessage);
@@ -280,7 +281,7 @@ export const logout = (navigate) => async (dispatch) => {
     dispatch(logoutFxn());
     dispatch(clearUser());
     dispatch(clearGroup());
-    navigate('/loginTest', { replace: true });
+    navigate('/login', { replace: true });
     console.log('logout successful!');
   }).catch((error) => {
     // An error happened.

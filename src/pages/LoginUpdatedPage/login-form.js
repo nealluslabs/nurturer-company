@@ -97,7 +97,7 @@ function LoginForm(props) {
         }
       > 
          {/*DO NOT DELETE THIS CHECK, IT ACCOUNTS FOR ALL FORMS OF ERROR MESSAGE*/}
-        <p style={{ fontSize: '14px' }}><b>{error&& error !== null && error.includes('message') ? typeof(JSON.parse(error)) === "object"  && "Invalid Login Credentials,Please try again":error}</b></p>
+        <p style={{ fontSize: '14px' }}><b>{error&& error !== null && error.includes('message') ? typeof(JSON.parse(error)) === "object"  && "Invalid Login Details,Please try again":error}</b></p>
       </Alert><br/></div>}
 
       
