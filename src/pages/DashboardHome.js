@@ -409,7 +409,7 @@ const DashboardHome = () => {
             <div style={{ display: 'flex', alignItems: "center" }}>
               <SendIcon sx={{ width: 25, height: 25, marginRight: "4px" }} />
               <h3>Recent Messages</h3>
-            </div>
+            </div> 
             <button
               style={{
                 border: `2px solid grey`,
