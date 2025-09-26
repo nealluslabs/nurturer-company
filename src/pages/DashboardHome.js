@@ -350,7 +350,12 @@ const DashboardHome = () => {
                 }
               ]
             }}
-            series={[44, 25, 31]}
+            series={[
+              
+               user && user.emailDistribution && user.emailDistribution.touches?user.emailDistribution.touches:31,
+               user && user.emailDistribution && user.emailDistribution.events?user.emailDistribution.events:25,
+                user && user.emailDistribution && user.emailDistribution.newsletters?user.emailDistribution.newsletters:44
+              ]}
             type="donut"
             height={300}
           />
@@ -372,7 +377,14 @@ const DashboardHome = () => {
             }}
             series={[{
               name: 'Activity',
-              data: [44, 55, 57, 56, 61, 58]
+              data: [
+                user && user.monthlyActivity && user.monthlyActivity.jan?user.monthlyActivity.jan:44,
+                user && user.monthlyActivity && user.monthlyActivity.feb?user.monthlyActivity.feb:55,
+                user && user.monthlyActivity && user.monthlyActivity.mar?user.monthlyActivity.mar:57,
+                user && user.monthlyActivity && user.monthlyActivity.apr?user.monthlyActivity.apr:56,
+                user && user.monthlyActivity && user.monthlyActivity.may?user.monthlyActivity.may:61,
+                user && user.monthlyActivity && user.monthlyActivity.jun?user.monthlyActivity.jun:58
+              ]
             }]}
             type="bar"
             height={300}
