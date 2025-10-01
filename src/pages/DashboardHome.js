@@ -103,7 +103,7 @@ const DashboardHome = () => {
   // If no touchpoints available, provide dummy sample items so UI isn't empty
   if (touchpointData.length === 0) {
     touchpointData = [
-      {
+      /*{
         id: 'd1',
         title: 'Welcome message',
         subtitle: 'System - support@nurturer.ai',
@@ -157,7 +157,7 @@ const DashboardHome = () => {
         icon: Mail,
         iconColor: '#1976d2',
         uid: 'system3'
-      }
+      }*/
     ];
   }
 
@@ -425,7 +425,7 @@ const DashboardHome = () => {
             </button>
           </div>
 
-          <div style={{ background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+          <div style={{height:'22.3rem', background: "white", borderRadius: "4px", marginTop: "18px", padding: "42px 12px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
             {touchpointData.length === 0 ? (
               <div style={{ textAlign: 'center', color: '#888', padding: '16px 0' }}>No pending messages found.</div>
             ) : (
