@@ -15,13 +15,18 @@ import {
 } from '@mui/material';
 import { Search, Send, CheckCircleOutline, ArrowBack } from '@mui/icons-material';
 import Image from "../../assets/Group-2.png";
+import { useSelector } from 'react-redux';
 
 const ChatInterface = () => {
   const [selectedChat, setSelectedChat] = useState(null);
   const [message, setMessage] = useState('');
   const [activeTab, setActiveTab] = useState('touches');
 
-  const mockChats = [
+ // const { isAuth, user, company } = this.state.first.auth || { isAuth: true/*, user: { uid: 'test' }*/ };
+
+  const { user,company} = useSelector((state) => state.auth);
+
+  let mockChats = [/*
     {
       id: 1,
       name: 'Nurturer Support',
@@ -46,12 +51,52 @@ const ChatInterface = () => {
       timestamp: '12:20 PM',
       unread: 1
     }
-  ];
+  */];
 
-  const mockMessages = [
+
+
+  if (company && company.tickets &&  company.tickets.length) {
+    let allMessages = [];
+   company.tickets.forEach(message => {
+       allMessages.push(
+        {
+          ...message,
+          name:message.messageTitle ,
+          avatar: 'https://i.pravatar.cc/150?img=1',
+          lastMessage: message.messageTitle,
+          timestamp: '2:30 PM',
+          unread: 2
+        },
+       )
+    
+   })
+
+   mockChats = [...allMessages]
+  
+  }
+
+
+  const [mockMessages,setMockMessages] = useState([
     { id: 1, text: 'Thank you for your payment. Your subscription has been renewed.', sender: 'them', time: '2:30 PM' }
-  ];
+  ]);
 
+
+  function updateMockMessages(message) {
+
+     setMockMessages([
+      {
+        ...message,
+        text:message.messageTitle
+
+      }
+     ])
+
+     
+    
+  }
+
+
+ 
   return (
     <Box
       sx={{
@@ -126,7 +171,8 @@ const ChatInterface = () => {
               <ListItem
                 key={chat.id}
                 button
-                onClick={() => setSelectedChat(chat)}
+                
+                onClick={() => {setSelectedChat(chat); updateMockMessages(chat)}}
                 sx={{
                   borderBottom: '1px solid #f0f0f0',
                   backgroundColor: selectedChat?.id === chat.id ? '#f0f8ff' : 'transparent',
@@ -144,7 +190,7 @@ const ChatInterface = () => {
                   primary={
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
-                        {chat.name}
+                        {chat.messageSender}
                       </Typography>
                       <Typography variant="caption" color="text.secondary">
                         6 days ago
@@ -163,7 +209,7 @@ const ChatInterface = () => {
                           maxWidth: '150px'
                         }}
                       >
-                        {chat.lastMessage}
+                        {chat.messageTitle}
                       </Typography>
                     </Box>
                   }
@@ -201,6 +247,9 @@ const ChatInterface = () => {
                   display: { xs: 'block', md: 'none' },
                   p: 0.5
                 }}
+                
+            
+                
                 onClick={() => setSelectedChat(null)}
               >
                 <ArrowBack />
@@ -209,8 +258,10 @@ const ChatInterface = () => {
                 <Avatar src={Image} sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }} />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
-                {selectedChat.name}
+                {selectedChat.messageSender}
               </Typography>
+
+            
             </>
           ) : (
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
@@ -250,12 +301,12 @@ const ChatInterface = () => {
                     borderRadius: '16px',
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start'
                   }}
                 >
-                  <Typography variant="body1" sx={{ textAlign: 'left', fontSize: '1.1rem' }}>
-                    {msg.text}
+                  <Typography variant="body1" sx={{ textAlign: 'left', fontSize: '0.8rem' }}>
+                    {msg.messageTitle}
                   </Typography>
                 </Paper>
               </Box>

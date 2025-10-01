@@ -174,7 +174,7 @@ export default function ChatSidebar() {
             '& .MuiDrawer-paper': { width: SIDEBAR_WIDTH },
           }}
         >
-          {renderContent}
+          {/*renderContent*/}
         </Drawer>
       )}
     </>
