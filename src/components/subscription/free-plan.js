@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import SubscriptionHeader from "./subscription-header";
 
 // Icons
@@ -27,6 +28,8 @@ const features = [
 ];
 
 const FreePlan = () => {
+
+    const { user,company } = useSelector((state) => state.auth);
 
     return (
         <div>
@@ -59,7 +62,13 @@ const FreePlan = () => {
                     aria-disabled="true"
                     style={{ background: '#f3f4f6', color: '#9ca3af', cursor: 'not-allowed', marginTop: 12 }}
                 >
-                    Change to Annually
+
+       {
+       company && company.subscription && company.subscription.length > 0 ?
+                    "Change to Annually"
+                    :
+                    "Subscribe"
+                    }
                 </button>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import SubscriptionHeader from "./subscription-header";
 
 // Icons
@@ -23,6 +24,9 @@ const features = [
 ];
 
 const VipPlan = () => {
+
+    const { user,company } = useSelector((state) => state.auth);
+
 
     return (
         <div>
@@ -55,7 +59,12 @@ const VipPlan = () => {
                     aria-label="Downgrade"
                     style={{ marginTop: 12 }}
                 >
-                    Change To Monthly
+                    {
+                company && company.subscription && company.subscription.length > 0 ?
+                    "Change to Annually"
+                    :
+                    "Subscribe"
+                    }
                 </button>
             </div>
         </div>

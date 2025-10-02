@@ -11,7 +11,7 @@ const ServiceMessage = () => {
             <IoIosInformationCircleOutline />
             <span>
                 Your subscription will renew automatically on 
-                <strong>{company? company.subscriptionExpiration:"February 25, 2025"}</strong>.
+                <strong>{company && company.subscription && company.subscription.length > 0? company.subscription[0].expiration:"February 25, 2025"}</strong>.
             </span>
         </div>
     )

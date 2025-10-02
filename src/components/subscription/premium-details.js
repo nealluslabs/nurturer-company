@@ -39,8 +39,8 @@ const PremiumDetails = () => {
             </h1>
 
             <p className="sub_detail_sm_txt">
-                Next billing: {company? company.subscriptionExpiration:"February 25, 2025"} <br/>
-                Payment method: Visa **** 1234
+                Next billing: {company && company.subscription && company.subscription.length > 0 && company.subscription[0].expiration} <br/>
+                Payment method: {company && company.subscription && company.subscription.length > 0 && company.subscription[0].paymentMethod}
             </p>
 
             <div className="space_up_md">
@@ -55,7 +55,12 @@ const PremiumDetails = () => {
                 })}
             </div>
 
+
+         {company && company.subscription.length > 0 &&
             <ServiceMessage />
+         }
+
+
         </div>
     )
 }
