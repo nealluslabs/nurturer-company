@@ -49,7 +49,7 @@ const DashboardHome = () => {
     if (user && user.companyID && jobs && jobs.length > 0) {
       const companyJobs = jobs.filter(job => job.companyID === user.companyID);
       setFilteredJobs(companyJobs);
-    } else if (jobs && jobs.length > 0) {
+    } else if (jobs && jobs.length > 0) {touchpointData
       setFilteredJobs(jobs);
     }
   }, [jobs, user?.companyID]);
@@ -316,7 +316,8 @@ const DashboardHome = () => {
           <h3 style={{ marginBottom: '15px', textAlign: 'center' }}>Email Distribution</h3>
          
           <div className="myChartWrapper">
-          <ReactApexChart
+         
+            <ReactApexChart
             options={{
               chart: { 
                 type: 'donut',
@@ -333,6 +334,27 @@ const DashboardHome = () => {
                 itemMargin: {
                   horizontal: 10, // spacing between items
                   vertical: 0
+                }
+              },
+              dataLabels: {
+                enabled: true, // Enable data labels (percentages)
+                formatter: function (val, opts) {
+                  // Access the series value to check if it's 0 or non-existent
+                  const seriesIndex = opts.seriesIndex;
+                  const value = opts.w.config.series[seriesIndex];
+          
+                  // If the value is 0, display "0%" or conditionally modify the label
+                  if (value === 1) {
+                    return '0%';  // Force the label to show "0%" if the value is 0
+                  }
+          
+                  // Otherwise, show the percentage as usual
+                  return `${val.toFixed(0)}%`;
+                },
+                style: {
+                  fontSize: '14px', // Customize the font size
+                  fontFamily: 'Helvetica, Arial, sans-serif', // Customize the font
+                  colors: ['#fff'] // White color for the percentage text
                 }
               },
               responsive: [
@@ -352,13 +374,14 @@ const DashboardHome = () => {
             }}
             series={[
               
-               user && user.emailDistribution && user.emailDistribution.touches?user.emailDistribution.touches:31,
-               user && user.emailDistribution && user.emailDistribution.events?user.emailDistribution.events:25,
-                user && user.emailDistribution && user.emailDistribution.newsletters?user.emailDistribution.newsletters:44
+               user && user.emailDistribution && user.emailDistribution.touches?user.emailDistribution.touches:1,
+               user && user.emailDistribution && user.emailDistribution.events?user.emailDistribution.events:1,
+                user && user.emailDistribution && user.emailDistribution.newsletters?user.emailDistribution.newsletters:1
               ]}
             type="donut"
             height={300}
           />
+          
           </div>
         </Box>
 
@@ -378,12 +401,12 @@ const DashboardHome = () => {
             series={[{
               name: 'Activity',
               data: [
-                user && user.monthlyActivity && user.monthlyActivity.jan?user.monthlyActivity.jan:44,
-                user && user.monthlyActivity && user.monthlyActivity.feb?user.monthlyActivity.feb:55,
-                user && user.monthlyActivity && user.monthlyActivity.mar?user.monthlyActivity.mar:57,
-                user && user.monthlyActivity && user.monthlyActivity.apr?user.monthlyActivity.apr:56,
-                user && user.monthlyActivity && user.monthlyActivity.may?user.monthlyActivity.may:61,
-                user && user.monthlyActivity && user.monthlyActivity.jun?user.monthlyActivity.jun:58
+                user && user.monthlyActivity && user.monthlyActivity.jan?user.monthlyActivity.jan:0,
+                user && user.monthlyActivity && user.monthlyActivity.feb?user.monthlyActivity.feb:0,
+                user && user.monthlyActivity && user.monthlyActivity.mar?user.monthlyActivity.mar:0,
+                user && user.monthlyActivity && user.monthlyActivity.apr?user.monthlyActivity.apr:0,
+                user && user.monthlyActivity && user.monthlyActivity.may?user.monthlyActivity.may:0,
+                user && user.monthlyActivity && user.monthlyActivity.jun?user.monthlyActivity.jun:0
               ]
             }]}
             type="bar"
