@@ -201,7 +201,7 @@ export default function CJobs() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {jobs && jobs.length ?
-        <CJobList jobs={jobs} />
+        <CJobList jobs={jobArr} />
         :
         <center>
           <Box sx={{ width: 300 }}>
