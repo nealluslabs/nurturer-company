@@ -92,12 +92,12 @@ const loginPageData = {
         <h1> WELCOME TO NURTURER COMPANY</h1>
         </div>
 
-      <div className = "intro-desc">
+      <div >
          <h1>The AI powered assistant that keeps you in the conversation</h1>
          <ul>
-          <li>Stay Top-Of-Mind</li>
-          <li>Save Time, Close More</li>
-          <li>Never Miss a Lead</li>
+          <li style={{textDecoration:"dotted"}}>Stay Top-Of-Mind</li>
+          <li style={{textDecoration:"dotted"}}>Save Time, Close More</li>
+          <li style={{textDecoration:"dotted"}}>Never Miss a Lead</li>
          
          </ul>
        </div> 

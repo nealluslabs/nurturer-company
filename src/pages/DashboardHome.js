@@ -392,6 +392,10 @@ const DashboardHome = () => {
             options={{
               chart: { type: 'bar', toolbar: { show: false } },
               xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] },
+              yaxis: {
+                min: 35, // Set the minimum value of the Y-axis to 40
+                forceNiceScale: true, // This ensures that the range fits your data nicely
+              },
               colors: ['#008FFB'],
               plotOptions: {
                 bar: { borderRadius: 4, horizontal: false }
