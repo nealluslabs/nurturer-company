@@ -82,11 +82,11 @@ const ChatInterface = () => {
 
 
   function updateMockMessages(message) {
-
+console.log("AFTER SELECTING, WHAT IS MOCK MESSAGES--->",mockMessages)
      setMockMessages([
       {
         ...message,
-        text:message.messageTitle
+        text:message.messageContent && message.messageContent
 
       }
      ])
@@ -306,7 +306,7 @@ const ChatInterface = () => {
                   }}
                 >
                   <Typography variant="body1" sx={{ textAlign: 'left', fontSize: '0.8rem' }}>
-                    {msg.messageTitle}
+                    {msg.text}
                   </Typography>
                 </Paper>
               </Box>
