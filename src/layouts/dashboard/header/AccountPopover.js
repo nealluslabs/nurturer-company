@@ -71,24 +71,26 @@ export default function AccountPopover() {
             mt: 1.5,
             ml: 0.75,
             width: 200,
-            zIndex: 9999,
-            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
-            border: '1px solid rgba(0, 0, 0, 0.1)',
+            zIndex: 1300,
+            boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.2)',
+            border: '1px solid rgba(0, 0, 0, 0.12)',
+            borderRadius: '8px',
             display: 'flex',
             flexDirection: 'column',
             '& .MuiMenuItem-root': {
               typography: 'body2',
-              borderRadius: 0.75,
+              borderRadius: '4px',
               display: 'block',
               width: '100%',
+              padding: '12px 16px',
               '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                backgroundColor: 'rgba(0, 0, 0, 0.08)',
               },
             },
           },
         }}
         sx={{
-          zIndex: 9999,
+          zIndex: 1300,
         }}
       >
         <MenuItem onClick={handleClose} sx={{ m: 1, display: 'block', width: '100%' }}>

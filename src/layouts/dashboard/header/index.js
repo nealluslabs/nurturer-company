@@ -81,10 +81,10 @@ export default function Header({ onOpenNav }) {
             <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
               <Box sx={{ textAlign: 'right', mr: 2 }}>
                 <Typography sx={{ fontSize: '14px', fontWeight: 600, color: '#333', lineHeight: 1.2 }}>
-                 { user && user.companyName?user.companyName:"Demo User"}
+                 { user && user.companyName?user.companyName:"Company"}
                 </Typography>
                 <Typography sx={{ fontSize: '12px', color: '#666', lineHeight: 1.2 }}>
-                { user && user.name?user.name:"User"}
+                { user && user.name?user.name:"Company"}
                 </Typography>
               </Box>
               <AccountPopover />

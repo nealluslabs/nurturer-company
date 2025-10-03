@@ -10,10 +10,8 @@ export default function InboxApp() {
         <title> Inbox | Dashboard </title>
       </Helmet>
 
-      {/* Banner Component */}
       <InboxBanner />
 
-      {/* Chat Interface Component */}
       <ChatInterface />
     </>
   );

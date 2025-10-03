@@ -13,7 +13,7 @@ import {
   IconButton,
   Chip
 } from '@mui/material';
-import { Search, Send, CheckCircleOutline, ArrowBack } from '@mui/icons-material';
+import { Search, Send, CheckCircleOutline, ArrowBack, Message } from '@mui/icons-material';
 import Image from "../../assets/Group-2.png";
 import { useSelector } from 'react-redux';
 
@@ -229,46 +229,46 @@ console.log("AFTER SELECTING, WHAT IS MOCK MESSAGES--->",mockMessages)
           backgroundColor: '#ffffff'
         }}
       >
-        <Box
-          sx={{
-            p: { xs: 1.5, sm: 2 },
-            backgroundColor: '#34495e',
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 2
-          }}
-        >
-          {selectedChat ? (
-            <>
-              <IconButton
-                sx={{
-                  color: 'white',
-                  display: { xs: 'block', md: 'none' },
-                  p: 0.5
-                }}
+        {
+          selectedChat && (
+            <Box
+              sx={{
+                p: { xs: 1.5, sm: 2 },
+                backgroundColor: '#34495e',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 2
+              }}
+            >
+              {selectedChat && (
+                <>
+                  <IconButton
+                    sx={{
+                      color: 'white',
+                      display: { xs: 'block', md: 'none' },
+                      p: 0.5
+                    }}
+                    
                 
-            
-                
-                onClick={() => setSelectedChat(null)}
-              >
-                <ArrowBack />
-              </IconButton>
-              <Box sx={{ position: 'relative' }}>
-                <Avatar src={Image} sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }} />
-              </Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
-                {selectedChat.messageSender}
-              </Typography>
+                    
+                    onClick={() => setSelectedChat(null)}
+                  >
+                    <ArrowBack />
+                  </IconButton>
+                  <Box sx={{ position: 'relative' }}>
+                    <Avatar src={Image} sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                    {selectedChat.messageSender}
+                  </Typography>
 
-            
-            </>
-          ) : (
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              Select a conversation
-            </Typography>
-          )}
-        </Box>
+                
+                </>
+              )}
+            </Box>
+          )
+        }
 
         <Box
           sx={{
@@ -315,13 +315,44 @@ console.log("AFTER SELECTING, WHAT IS MOCK MESSAGES--->",mockMessages)
             <Box
               sx={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '100%'
+                height: '100%',
+                textAlign: 'center'
               }}
             >
-              <Typography variant="body1" color="text.secondary">
-                Select a conversation to start chatting
+              <Box
+                sx={{
+                  width: 150,
+                  height: 150,
+                  borderRadius: '50%',
+                  backgroundColor: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mb: 3,
+                  boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)'
+                }}
+              >
+                <Message sx={{ fontSize: 48, color: '#42a5f5' }} />
+              </Box>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 'bold',
+                  color: '#000000',
+                  mb: 1,
+                  fontSize: '1.5rem'
+                }}
+              >
+                Send Email To Contact
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+              >
+                Select a contact to review message.
               </Typography>
             </Box>
           )}

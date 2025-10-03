@@ -6,7 +6,7 @@ const InboxBanner = () => {
     <Box
       sx={{
         position: 'absolute',
-        top: { xs: 0, lg: '80px' }, // 0 on mobile, 80px on desktop
+        top: { xs: 0, lg: '80px' }, 
         left: 0,
         right: 0,
         width: '100vw',
