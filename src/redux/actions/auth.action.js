@@ -102,6 +102,48 @@ export const signup = (user,navigate) => async (dispatch) => {
 }
 
 
+export const createNewUser = (email,companyId,setIsLoading,setMessage) => async (dispatch) => {
+ 
+   
+   console.log("Just before the CREATING OF A NEW USER happens!!!!")
+    fb.auth().createUserWithEmailAndPassword(
+      email,
+      '12345678'
+  ).then((res)=>{
+     db.collection('users').doc(res.user.uid).set({
+      uid: res.user.uid,
+      id: res.user.uid,
+      
+      name:`${email.split('@')[0]}`,
+      email: email,
+      companyID:companyId,
+      photoUrl:"https://firebasestorage.googleapis.com/v0/b/bridgetech-advance-project.appspot.com/o/profile_images%2Fprofile.jpg?alt=media&token=b3c94ada-1b08-4834-bbd1-647882c7195a",
+      contacts:[],
+      queryMsg:[],
+      lastActive:1759529429161,
+      password: '12345678',
+      registeredOn:new Date(),
+      
+    })
+    
+
+   //SET PASSWORD RESET EMAIL HERE - OCT 6 2025 - DAGOGO
+   fb.auth().sendPasswordResetEmail(email)
+  }).then(() => {
+   
+    setIsLoading(false)
+    setMessage("User created successfully!")
+  }).catch((err) => {
+    console.error("Error creating new user: ", err);
+    var errorMessage = err.message;
+    setIsLoading(false)
+    setMessage(err.message)
+   // dispatch(signupFailed({ errorMessage }));
+  })
+}
+
+
+
 export const uploadImage = (user, file, navigate, setLoading) => async (dispatch) => {
   const imageName = uuidv4() + '.' + file?.name?.split('.')?.pop();
   console.log('File Name: ', imageName);

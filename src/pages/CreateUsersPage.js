@@ -9,9 +9,14 @@ import {
   Divider,
   Chip,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewUser } from "src/redux/actions/auth.action";
 
 export default function CreateUsersPage() {
+
+  const {user,company} = useSelector((state)=>(state.auth))
+
+  console.log("OKAY WHAT CAN I GET FROM THE COMPANY ??-->",company)
   const [values, setValues] = useState({
     email: "",
     confirmEmail: "",
@@ -33,10 +38,12 @@ export default function CreateUsersPage() {
     e.preventDefault();
     setIsLoading(true);
     // Add your submit logic here
-    setTimeout(() => {
-      setIsLoading(false);
-      setMessage("User created successfully!");
-    }, 2000);
+  //  setTimeout(() => {
+  //    setIsLoading(false);
+  //    setMessage("User created successfully!");
+  //  }, 2000);
+
+    dispatch(createNewUser(values.email,company && company.companyID,setIsLoading,setMessage))
   };
 
   const resetMsg = () => {
@@ -87,7 +94,9 @@ export default function CreateUsersPage() {
               </div>
             )}
 
-            {message && (
+            {message &&  (
+
+          message && message.includes("User created successfully!")?
               <div>
                 <Alert
                   severity="success"
@@ -109,6 +118,33 @@ export default function CreateUsersPage() {
                 </Alert>
                 <br />
               </div>
+
+              :
+
+              <div>
+                <Alert
+                  severity="failure"
+                  color="failure"
+                  action={
+                    <Button
+                      color="inherit"
+                      size="small"
+                      style={{ fontSize: "15px" }}
+                      onClick={resetMsg}
+                    >
+                      <b>X</b>
+                    </Button>
+                  }
+                >
+                  <p style={{ fontSize: "11px" }}>
+                    <b>{message}</b>
+                  </p>
+                </Alert>
+                <br />
+              </div>
+            
+            
+            
             )}
 
             <Grid

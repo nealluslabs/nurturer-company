@@ -94,7 +94,7 @@ const loginPageData = {
 
       <div >
          <h1>The AI powered assistant that keeps you in the conversation</h1>
-         <ul>
+         <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
           <li style={{textDecoration:"dotted"}}>Stay Top-Of-Mind</li>
           <li style={{textDecoration:"dotted"}}>Save Time, Close More</li>
           <li style={{textDecoration:"dotted"}}>Never Miss a Lead</li>
