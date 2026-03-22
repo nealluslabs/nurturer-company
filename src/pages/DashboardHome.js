@@ -7,7 +7,7 @@ import ReactApexChart from 'react-apexcharts';
 import GroupsIcon from '@mui/icons-material/Groups';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
+// import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import CakeIcon from '@mui/icons-material/Cake';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -208,13 +208,13 @@ const DashboardHome = () => {
       label: 'Users Online',
       color: '#03bafc',
     },
-    {
-      id: 4,
-      icon: LightbulbIcon,
-      count: 5,
-      label: 'Smart Suggestions',
-      color: '#03fc5a',
-    },
+    // {
+    //   id: 4,
+    //   icon: LightbulbIcon,
+    //   count: 5,
+    //   label: 'Smart Suggestions',
+    //   color: '#03fc5a',
+    // },
   ];
 
   const resortFilteredUsersAndPush = (userId) => {
@@ -248,8 +248,8 @@ const DashboardHome = () => {
         display: "grid",
         gridTemplateColumns: {
           xs: "repeat(2, 1fr)",        // mobile (extra-small)
-          sm: "repeat(4, 1fr)", // small screens
-          md: "repeat(4, 1fr)"  // medium+
+          sm: "repeat(3, 1fr)", // small screens
+          md: "repeat(3, 1fr)"  // medium+
         },
         gap: "16px"
       }}>
