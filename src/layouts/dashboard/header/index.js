@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
-const NAV_WIDTH = '20%';
+const NAV_WIDTH = 280;
+const CONTENT_SPACING = 10;
 
 const HEADER_MOBILE = 64;
 
@@ -21,8 +22,8 @@ const HEADER_DESKTOP = 92;
 const StyledRoot = styled(AppBar)(({ theme }) => ({
   background: '#fff',
   boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)',
-  width: '80%',
-  marginLeft: NAV_WIDTH,
+  width: `calc(100% - ${NAV_WIDTH + CONTENT_SPACING * 2}px)`,
+  marginLeft: NAV_WIDTH + CONTENT_SPACING,
   zIndex: theme.zIndex.appBar,
   [theme.breakpoints.down('lg')]: {
     width: '100%',
@@ -34,7 +35,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   minHeight: HEADER_MOBILE,
   [theme.breakpoints.up('lg')]: {
     minHeight: HEADER_DESKTOP,
-    padding: theme.spacing(0, 5),
+    padding: theme.spacing(0, 2),
   },
 }));
 
